@@ -39,7 +39,7 @@ Website: http://www.webthemez.com/
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html"><strong>Cửa hàng</strong></a>
+                <a class="navbar-brand" href="index.php"><strong>Cửa hàng</strong></a>
 
                 <div id="sideNav" href="">
                     <i class="fa fa-bars icon"></i>
@@ -69,22 +69,21 @@ Website: http://www.webthemez.com/
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
                     <li>
-                        <a href="#" class="active-menu"><i class="fa fa-sitemap"></i>Quản lý tài khoản<span
-                                class="fa arrow"></span></a>
+                        <a href="#" class="active-menu"><i class="fa fa-sitemap"></i>Quản lý tài khoản<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="./quan-ly-tai-khoan.html"><i class="fa fa-users"></i> Danh sách tài khoản</a>
+                                <a href="./quan-ly-tai-khoan.php"><i class="fa fa-users"></i> Danh sách tài khoản</a>
                             </li>
                             <li>
-                                <a href="./them-tai-khoan.html"><i class="fa fa-user"></i> Thêm tài khoản</a>
+                                <a href="./them-tai-khoan.php"><i class="fa fa-user"></i> Thêm tài khoản</a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="../index.html"><i class="fa fa-dashboard"></i> Thống kê cửa hàng</a>
+                        <a href="../index.php"><i class="fa fa-dashboard"></i> Thống kê cửa hàng</a>
                     </li>
                     <li>
-                        <a href="../empty.html"><i class="fa fa-fw fa-file"></i> Empty Page</a>
+                        <a href="../#"><i class="fa fa-fw fa-file"></i> Empty Page</a>
                     </li>
                 </ul>
             </div>
@@ -110,11 +109,18 @@ Website: http://www.webthemez.com/
                                 </div>
                             </div>
                             <div class="panel-body">
-                                <form action="../function/regist.php" method="POST">
+                                <form action="../controller/user/user.controller.php?action=dangky" method="POST">
+                                    <?php 
+                                        if(isset($_GET['regSuccess'])) {
+                                            echo "<p>Đăng ký thành công</p>";
+                                        }
+                                        else if(isset($_GET['regFail'])) {
+                                            echo "<p>Đăng ký không thành công</p>";
+                                        }
+                                    ?>
                                     <div class="form-group">
                                         <label for="txtHoten">Họ tên</label>
-                                        <input type="text" class="form-control" name="txtHoTen" id="txtHoten"
-                                            placeholder="Họ tên" required>
+                                        <input type="text" class="form-control" name="txtHoTen" id="txtHoten" placeholder="Họ tên" required>
                                     </div>
                                     <div class="sub-title">Giới tính</div>
                                     <div class="radio3 radio-check radio-inline">
@@ -131,18 +137,15 @@ Website: http://www.webthemez.com/
                                     </div>
                                     <div class="form-group">
                                         <label for="txtEmail">Email</label>
-                                        <input type="text" class="form-control" name="txtEmail" id="txtEmail"
-                                            placeholder="Email" required>
+                                        <input type="text" class="form-control" name="txtEmail" id="txtEmail" placeholder="Email" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="txtSdt">Số điện thoại</label>
-                                        <input type="number" class="form-control" name="txtSdt" id="txtSdt"
-                                            placeholder="Số điện thoại" required>
+                                        <input type="number" class="form-control" name="txtSdt" id="txtSdt" placeholder="Số điện thoại" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="txtPassword">Mật khẩu</label>
-                                        <input type="password" class="form-control" name="txtPassword" id="txtPassword"
-                                            placeholder="Mật khẩu" required>
+                                        <input type="password" class="form-control" name="txtPassword" id="txtPassword" placeholder="Mật khẩu" required>
                                     </div>
                                     <div class="sub-title">Chức vụ</div>
                                     <select class="selectbox" name="txtChucVu">
@@ -155,7 +158,7 @@ Website: http://www.webthemez.com/
                                     <p></p>
                                     <tr>
                                         <td colspan="2"><input type="submit" name="btn_submit" value="Đăng ký"></td>
-                                      </tr>
+                                    </tr>
                                 </form>
                             </div>
                         </div>
@@ -183,7 +186,7 @@ Website: http://www.webthemez.com/
     <script src="assets/js/jquery.metisMenu.js"></script>
     <script src="assets/js/select2.full.min.js"></script>
     <script type="text/javascript">
-        $(document).ready(function () {
+        $(document).ready(function() {
             $(".selectbox").select2();
         });
     </script>

@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿<?php session_start(); ?>
+
+<!DOCTYPE html>
 <!-- 
 Template Name: BRILLIANT Bootstrap Admin Template
 Version: 4.5.6
@@ -37,7 +39,7 @@ Website: http://www.webthemez.com/
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html"><strong>Cửa hàng</strong></a>
+                <a class="navbar-brand" href="index.php"><strong>Cửa hàng</strong></a>
 
                 <div id="sideNav" href="">
                     <i class="fa fa-bars icon"></i>
@@ -46,17 +48,17 @@ Website: http://www.webthemez.com/
             <ul class="nav navbar-top-links navbar-right">
                 <!-- /.dropdown -->
                 <li class="dropdown">
-                    
+
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                       
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> 
-                            Thông tin cá nhân</a>
+                        <li><a href="#"><?php echo $_SESSION['email'];  ?></a></li>
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i>
+                                Thông tin cá nhân</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Đăng xuất</a>
+                        <li><a href="./views/logout.php"><i class="fa fa-sign-out fa-fw"></i> Đăng xuất</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -64,7 +66,6 @@ Website: http://www.webthemez.com/
                 <!-- /.dropdown -->
             </ul>
         </nav>
-        
         <!--/. NAV TOP  -->
         <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
@@ -73,35 +74,23 @@ Website: http://www.webthemez.com/
                         <a href="#"><i class="fa fa-sitemap"></i> Quản lý tài khoản<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="./views/quan-ly-tai-khoan.html"><i class="fa fa-users"></i> Danh sách tài khoản</a>
+                                <a href="./views/quan-ly-tai-khoan.php"><i class="fa fa-users"></i> Danh sách tài khoản</a>
                             </li>
                             <li>
-                                <a href="./views/them-tai-khoan.html"><i class="fa fa-user"></i> Thêm tài khoản</a>
-                            </li>                       
+                                <a href="./views/them-tai-khoan.php"><i class="fa fa-user"></i> Thêm tài khoản</a>
+                            </li>
                         </ul>
                     </li>
                     <li>
-                        <a class="active-menu" href="./index.html"><i class="fa fa-dashboard"></i> Thống kê cửa hàng</a>
-                    </li>
-
-                    <li>
-                        <a class="active-menu" href="./index.html"><i class="fa fa-dashboard"></i>Nhập Hàng</a>
+                        <a class="active-menu" href="./index.php"><i class="fa fa-dashboard"></i> Thống kê cửa hàng</a>
                     </li>
                     <li>
-                        <a class="active-menu" href="./index.html"><i class="fa fa-dashboard"></i>Danh Sách Hàng</a>
-                    </li>
-                    <li>
-                        <a class="active-menu" href="./index.html"><i class="fa fa-dashboard"></i> Thanh Toán</a>
-                    </li>
-
-                    <li>
-                        <a href="empty.html"><i class="fa fa-fw fa-file"></i> Empty Page</a>
+                        <a href="#"><i class="fa fa-fw fa-file"></i> Empty Page</a>
                     </li>
                 </ul>
             </div>
         </nav>
         <!-- /. NAV SIDE  -->
-
         <div id="page-wrapper">
             <div class="header">
                 <h1 class="page-header">
@@ -131,7 +120,6 @@ Website: http://www.webthemez.com/
                             </div>
                         </div>
                     </div>
-
                     <div class="col-md-3 col-sm-12 col-xs-12">
                         <div class="board">
                             <div class="panel panel-primary">
@@ -144,11 +132,9 @@ Website: http://www.webthemez.com/
                                 <div class="icon">
                                     <i class="fa fa-shopping-cart fa-5x blue"></i>
                                 </div>
-
                             </div>
                         </div>
                     </div>
-
                     <div class="col-md-3 col-sm-12 col-xs-12">
                         <div class="board">
                             <div class="panel panel-primary">
@@ -165,7 +151,6 @@ Website: http://www.webthemez.com/
                             </div>
                         </div>
                     </div>
-
                     <div class="col-md-3 col-sm-12 col-xs-12">
                         <div class="board">
                             <div class="panel panel-primary">
@@ -182,7 +167,6 @@ Website: http://www.webthemez.com/
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <div class="row">
                     <div class="col-sm-6 col-xs-12">
@@ -216,8 +200,7 @@ Website: http://www.webthemez.com/
                         <div class="panel panel-default">
                             <div class="panel-body easypiechart-panel">
                                 <h4>Profit</h4>
-                                <div class="easypiechart" id="easypiechart-blue" data-percent="82"><span
-                                        class="percent">82%</span>
+                                <div class="easypiechart" id="easypiechart-blue" data-percent="82"><span class="percent">82%</span>
                                 </div>
                             </div>
                         </div>
@@ -226,8 +209,7 @@ Website: http://www.webthemez.com/
                         <div class="panel panel-default">
                             <div class="panel-body easypiechart-panel">
                                 <h4>Sales</h4>
-                                <div class="easypiechart" id="easypiechart-orange" data-percent="55"><span
-                                        class="percent">55%</span>
+                                <div class="easypiechart" id="easypiechart-orange" data-percent="55"><span class="percent">55%</span>
                                 </div>
                             </div>
                         </div>
@@ -236,8 +218,7 @@ Website: http://www.webthemez.com/
                         <div class="panel panel-default">
                             <div class="panel-body easypiechart-panel">
                                 <h4>Customers</h4>
-                                <div class="easypiechart" id="easypiechart-teal" data-percent="84"><span
-                                        class="percent">84%</span>
+                                <div class="easypiechart" id="easypiechart-teal" data-percent="84"><span class="percent">84%</span>
                                 </div>
                             </div>
                         </div>
@@ -246,8 +227,7 @@ Website: http://www.webthemez.com/
                         <div class="panel panel-default">
                             <div class="panel-body easypiechart-panel">
                                 <h4>No. of Visits</h4>
-                                <div class="easypiechart" id="easypiechart-red" data-percent="46"><span
-                                        class="percent">46%</span>
+                                <div class="easypiechart" id="easypiechart-red" data-percent="46"><span class="percent">46%</span>
                                 </div>
                             </div>
                         </div>

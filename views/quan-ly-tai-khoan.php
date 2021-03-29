@@ -36,7 +36,7 @@ Website: http://www.webthemez.com/
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html"><strong>Cửa hàng</strong></a>
+                <a class="navbar-brand" href="index.php"><strong>Cửa hàng</strong></a>
 
                 <div id="sideNav" href="">
                     <i class="fa fa-bars icon"></i>
@@ -69,18 +69,18 @@ Website: http://www.webthemez.com/
                         <a href="#" class="active-menu"><i class="fa fa-sitemap"></i>Quản lý tài khoản<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="./quan-ly-tai-khoan.html"><i class="fa fa-users"></i> Danh sách tài khoản</a>
+                                <a href="./quan-ly-tai-khoan.php"><i class="fa fa-users"></i> Danh sách tài khoản</a>
                             </li>
                             <li>
-                                <a href="./them-tai-khoan.html"><i class="fa fa-user"></i> Thêm tài khoản</a>
+                                <a href="./them-tai-khoan.php"><i class="fa fa-user"></i> Thêm tài khoản</a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="../index.html"><i class="fa fa-dashboard"></i> Thống kê cửa hàng</a>
+                        <a href="../index.php"><i class="fa fa-dashboard"></i> Thống kê cửa hàng</a>
                     </li>
                     <li>
-                        <a href="../empty.html"><i class="fa fa-fw fa-file"></i> Empty Page</a>
+                        <a href="../#"><i class="fa fa-fw fa-file"></i> Empty Page</a>
                     </li>
                 </ul>
             </div>
