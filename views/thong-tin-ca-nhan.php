@@ -56,10 +56,11 @@ Website: http://www.webthemez.com/
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> Thông tin cá nhân</a>
+                        <li><a href="#"><?php if (isset($_SESSION['email'])) echo $_SESSION['email'];  ?></a></li>
+                        <li><a href="./thong-tin-ca-nhan.php"><i class="fa fa-user fa-fw"></i> Thông tin cá nhân</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Đăng xuất</a>
+                        <li><a href="../views/logout.php"><i class="fa fa-sign-out fa-fw"></i> Đăng xuất</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -98,7 +99,7 @@ Website: http://www.webthemez.com/
                     THÔNG TIN CÁ NHÂN
                 </h1>
                 <ol class="breadcrumb">
-
+                    <li><a href="#">Cửa hàng</a></li>
                     <li class="active">Thông tin cá nhân</li>
                 </ol>
             </div>
@@ -108,51 +109,54 @@ Website: http://www.webthemez.com/
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <div class="card-title">
-                                    <div class="title">FORM ĐĂNG KÝ</div>
+                                    <div class="title">Trang thông tin cá nhân</div>
                                 </div>
                             </div>
                             <div class="panel-body">
-                                <form action="#" method="POST">
+                                <?php
+                                if (isset($_GET['updateSuccess'])) {
+                                    echo '<div class="form-group"><label style="color: blue; font-size: 20px;">Cập nhật thành công</label></div>';
+                                } else if (isset($_GET['updateFail'])) {
+                                    echo '<div class="form-group"><label style="color: red; font-size: 20px;">Cập nhật thất bại</label></div>';
+                                }
+                                ?>
+                                <form action="../controller//user/user.controller.php?action=updateInfo" method="POST">
+
                                     <div class="form-group">
                                         <label for="txtHoten">Họ tên</label>
-                                        <input type="text" class="form-control" name="txtHoTen" id="txtHoten" placeholder="Họ tên" value="" required>
+                                        <input type="text" class="form-control" name="txtHoTen" id="txtHoten" placeholder="Họ tên" value="<?php echo InfoUser("Username"); ?>" required>
                                     </div>
                                     <label for="txtGioiTinh">Giới tính</label><br>
                                     <div class="radio3 radio-check radio-primary radio-inline">
-                                        <input type="radio" id="radio4" name="txtGioiTinh" value="1" checked="">
+                                        <input type="radio" id="radio4" name="txtGioiTinh" value="1" <?php if (InfoUser("Gender") == 1) echo "checked"; ?>>
                                         <label for="radio4">
                                             Nam
                                         </label>
                                     </div>
                                     <div class="radio3 radio-check radio-success radio-inline">
-                                        <input type="radio" id="radio5" name="txtGioiTinh" value="0">
+                                        <input type="radio" id="radio5" name="txtGioiTinh" value="0" <?php if (InfoUser("Gender") == 0) echo "checked"; ?>>
                                         <label for="radio5">
                                             Nữ
                                         </label>
                                     </div>
                                     <div class="form-group">
                                         <label for="txtEmail">Email</label>
-                                        <input type="text" class="form-control" name="txtEmail" id="txtEmail" placeholder="Email" required>
+                                        <input type="text" class="form-control" name="txtEmail" id="txtEmail" placeholder="Email" value="<?php echo InfoUser("Email"); ?>" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="txtSdt">Số điện thoại</label>
-                                        <input type="number" class="form-control" name="txtSdt" id="txtSdt" placeholder="Số điện thoại" required>
+                                        <input type="number" class="form-control" name="txtSdt" id="txtSdt" placeholder="Số điện thoại" value="<?php echo InfoUser("PhoneNumber"); ?>" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txtChucVu">Chức vụ</label>
+                                        <input type="text" class="form-control" name="txtChucVu" id="txtChucVu" placeholder="Chức vụ" value="<?php echo InfoUser("nameRole"); ?>" disabled>
                                     </div>
                                     <div class="form-group">
                                         <label for="txtPassword">Mật khẩu</label>
-                                        <input type="password" class="form-control" name="txtPassword" id="txtPassword" placeholder="Mật khẩu" required>
+                                        <input type="password" class="form-control" name="txtPassword" id="txtPassword" placeholder="Mật khẩu">
                                     </div>
-                                    <label for="txtChucVu">Chức vụ</label><br>
-                                    <select class="selectbox" name="txtChucVu">
-                                        <optgroup label="Chức vụ">
-                                            <option value="" selected disabled>Chọn chức vụ</option>
-                                            <option value="1">Nhân viên</option>
-                                            <option value="2">Admin</option>
-                                        </optgroup>
-                                    </select>
-                                    <p></p>
                                     <tr>
-                                        <td colspan="2"><input type="submit" name="btn_submit" value="Đăng ký"></td>
+                                        <td colspan="2"><input type="submit" name="btn_submit" value="Cập nhật"></td>
                                     </tr>
                                 </form>
                             </div>

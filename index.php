@@ -48,12 +48,11 @@ Website: http://www.webthemez.com/
             <ul class="nav navbar-top-links navbar-right">
                 <!-- /.dropdown -->
                 <li class="dropdown">
-
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><?php echo $_SESSION['email'];  ?></a></li>
+                        <li><a href="#"><?php if (isset($_SESSION['email'])) echo $_SESSION['email'];  ?></a></li>
                         <li><a href="./views/thong-tin-ca-nhan.php"><i class="fa fa-user fa-fw"></i>
                                 Thông tin cá nhân</a>
                         </li>

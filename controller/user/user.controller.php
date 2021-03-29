@@ -1,18 +1,23 @@
 <?php
 session_start();
-include_once("./user.service.php");
+require_once(__DIR__ . "\user.service.php");
 
-$method = $_REQUEST["action"];
-if (isset($method)) {
-	switch ($method) {
-		case 'login';
-			checkLogin();
-			break;
-		case 'dangky':
-			registerAccount();
-			break;
-		default:
-			break;
+if (isset($_REQUEST["action"])) {
+	$method = $_REQUEST["action"];
+	if (isset($method)) {
+		switch ($method) {
+			case 'login';
+				checkLogin();
+				break;
+			case 'dangky':
+				registerAccount();
+				break;
+			case 'updateInfo':
+				updateInfo();
+				break;
+			default:
+				break;
+		}
 	}
 }
 
@@ -71,4 +76,21 @@ function InfoUser($value)
 		$data = sv_InfoUser($_SESSION['email']);
 	}
 	return $data[$value];
+}
+
+function updateInfo()
+{
+	if (isset($_POST['btn_submit'])) {
+		$sdt = $_POST["txtSdt"];
+		$password = $_POST["txtPassword"];
+		$username = $_POST["txtHoTen"];
+		$email = $_POST["txtEmail"];
+		$gender = $_POST["txtGioiTinh"];
+
+		if(sv_updateInfo($username, $email, $password, $sdt, $gender) > 0) {
+			header('Location: ../../../views/thong-tin-ca-nhan.php?updateSuccess');
+		}
+		else header('Location: ../../../views/thong-tin-ca-nhan.php?updateFail');
+	}
+	else header('Location: ../../../views/thong-tin-ca-nhan.php?updateFail');
 }

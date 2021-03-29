@@ -1,5 +1,5 @@
 <?php
-include_once("../../config/connection/connectDatabase.php");
+require_once(__DIR__ . "\..\..\config\connection\connectDatabase.php");
 
 function sv_checkLogin($email, $password)
 {
@@ -33,4 +33,15 @@ function sv_InfoUser($email)
         }
     }
     return $data;
+}
+
+function sv_updateInfo($username, $email, $password, $sdt, $gender)
+{
+    global $conn;
+    $ssEmail = $_SESSION['email'];
+    if (!isset($password))
+        $sql = "UPDATE user SET Username = '$username', Email = '$email', PhoneNumber = '$sdt', Gender = '$gender' WHERE Email = '$ssEmail'";
+    else $sql = "UPDATE user SET Username = '$username', Email = '$email', PhoneNumber = '$sdt', Gender = '$gender', Password = '$password' WHERE Email = '$ssEmail'";
+    $result = $conn->query($sql);
+    return $result;
 }

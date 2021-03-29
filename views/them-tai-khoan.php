@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <!-- 
 Template Name: BRILLIANT Bootstrap Admin Template
@@ -53,10 +54,11 @@ Website: http://www.webthemez.com/
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> Thông tin cá nhân</a>
+                        <li><a href="#"><?php if (isset($_SESSION['email'])) echo $_SESSION['email'];  ?></a></li>
+                        <li><a href="./thong-tin-ca-nhan.php"><i class="fa fa-user fa-fw"></i> Thông tin cá nhân</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Đăng xuất</a>
+                        <li><a href="../views/logout.php"><i class="fa fa-sign-out fa-fw"></i> Đăng xuất</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -110,13 +112,12 @@ Website: http://www.webthemez.com/
                             </div>
                             <div class="panel-body">
                                 <form action="../controller/user/user.controller.php?action=dangky" method="POST">
-                                    <?php 
-                                        if(isset($_GET['regSuccess'])) {
-                                            echo '<p style="color: blue;">Đăng ký thành công</p>';
-                                        }
-                                        else if(isset($_GET['regFail'])) {
-                                            echo '<p style="color: red;">Đăng ký không thành công</p>';
-                                        }
+                                    <?php
+                                    if (isset($_GET['regSuccess'])) {
+                                        echo '<div class="form-group"><label style="color: blue; font-size: 20px;">Đăng ký thành công</label></div>';
+                                    } else if (isset($_GET['regFail'])) {
+                                        echo '<p style="color: red;">Đăng ký thất bại</p>';
+                                    }
                                     ?>
                                     <div class="form-group">
                                         <label for="txtHoten">Họ tên</label>
