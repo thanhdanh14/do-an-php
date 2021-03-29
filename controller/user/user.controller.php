@@ -34,13 +34,13 @@ function registerAccount()
 			if (sv_registerAccount($username, $email, $password, $sdt, $gender, $role)) {
 				header("Location: ../../views/them-tai-khoan.php?regSuccess");
 			}
+			header("Location: ../../views/them-tai-khoan.php?regFail");
 		}
 	}
 }
 
 function checkLogin()
 {
-	global $conn;
 	// Kiểm tra nếu người dùng đã ân nút đăng nhập thì mới xử lý
 	if (isset($_POST["btn_submits"])) {
 		// lấy thông tin người dùng
@@ -63,4 +63,12 @@ function checkLogin()
 			header('Location: ../../login.php?loginFail'); //Tên dn or mk không đúng
 		}
 	}
+}
+
+function InfoUser($value)
+{
+	if (isset($_SESSION['email'])) {
+		$data = sv_InfoUser($_SESSION['email']);
+	}
+	return $data[$value];
 }

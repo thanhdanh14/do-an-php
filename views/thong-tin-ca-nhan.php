@@ -1,3 +1,6 @@
+<?php
+require("../controller/user/user.controller.php");
+?>
 <!DOCTYPE html>
 <!-- 
 Template Name: BRILLIANT Bootstrap Admin Template
@@ -12,7 +15,7 @@ Website: http://www.webthemez.com/
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta content="" name="description" />
     <meta content="webthemez" name="author" />
-    <title>Cửa hàng</title>
+    <title>THÔNG TIN CÁ NHÂN</title>
     <!-- Bootstrap Styles-->
     <link href="../assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FontAwesome Styles-->
@@ -92,11 +95,11 @@ Website: http://www.webthemez.com/
         <div id="page-wrapper">
             <div class="header">
                 <h1 class="page-header">
-                    Thêm tài khoản
+                    THÔNG TIN CÁ NHÂN
                 </h1>
                 <ol class="breadcrumb">
-                    <li><a href="#">Cửa hàng</a></li>
-                    <li class="active">Thêm tài khoản</li>
+
+                    <li class="active">Thông tin cá nhân</li>
                 </ol>
             </div>
             <div id="page-inner">
@@ -109,18 +112,10 @@ Website: http://www.webthemez.com/
                                 </div>
                             </div>
                             <div class="panel-body">
-                                <form action="../controller/user/user.controller.php?action=dangky" method="POST">
-                                    <?php 
-                                        if(isset($_GET['regSuccess'])) {
-                                            echo '<p style="color: blue;">Đăng ký thành công</p>';
-                                        }
-                                        else if(isset($_GET['regFail'])) {
-                                            echo '<p style="color: red;">Đăng ký không thành công</p>';
-                                        }
-                                    ?>
+                                <form action="#" method="POST">
                                     <div class="form-group">
                                         <label for="txtHoten">Họ tên</label>
-                                        <input type="text" class="form-control" name="txtHoTen" id="txtHoten" placeholder="Họ tên" required>
+                                        <input type="text" class="form-control" name="txtHoTen" id="txtHoten" placeholder="Họ tên" value="" required>
                                     </div>
                                     <label for="txtGioiTinh">Giới tính</label><br>
                                     <div class="radio3 radio-check radio-primary radio-inline">

@@ -15,7 +15,7 @@ Website: http://www.webthemez.com/
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta content="" name="description" />
     <meta content="webthemez" name="author" />
-    <title>Cửa hàng</title>
+    <title>THÔNG TIN CÁ NHÂN</title>
     <!-- Bootstrap Styles-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FontAwesome Styles-->
@@ -54,7 +54,7 @@ Website: http://www.webthemez.com/
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="#"><?php echo $_SESSION['email'];  ?></a></li>
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i>
+                        <li><a href="./views/thong-tin-ca-nhan.php"><i class="fa fa-user fa-fw"></i>
                                 Thông tin cá nhân</a>
                         </li>
                         <li class="divider"></li>
