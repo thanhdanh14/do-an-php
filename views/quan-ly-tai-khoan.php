@@ -112,20 +112,24 @@ Website: http://www.webthemez.com/
                                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                         <thead>
                                             <tr>
-                                                <th>Rendering engine</th>
-                                                <th>Browser</th>
-                                                <th>Platform(s)</th>
-                                                <th>Engine version</th>
-                                                <th>CSS grade</th>
+                                                <th>ID</th>
+                                                <th>Họ tên</th>
+                                                <th>Email</th>
+                                                <th>Số điện thoại</th>
+                                                <th>Giới tính</th>
+                                                <th>Chức vụ</th>
+                                                <th>#</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr class="odd gradeX">
-                                                <td>Trident</td>
-                                                <td>Internet Explorer 4.0</td>
-                                                <td>Win 95+</td>
-                                                <td class="center">4</td>
-                                                <td class="center">X</td>
+                                                <td>1</td>
+                                                <td>Minh Béo</td>
+                                                <td>mb@gmail.com</td>
+                                                <td>113</td>
+                                                <td class="center">Nữ</td>
+                                                <td class="center">Nhân Viên</td>
+                                                <td class="center"><a href="#">Chỉnh sửa</a> | <a href="#">Xóa</a></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -136,9 +140,7 @@ Website: http://www.webthemez.com/
                     </div>
                 </div>
                 <!-- /. ROW  -->
-
                 <footer>
-                    <p>All right reserved. Template by: <a href="http://webthemez.com">WebThemez.com</a></p>
                 </footer>
             </div>
             <!-- /. PAGE INNER  -->

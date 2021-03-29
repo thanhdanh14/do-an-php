@@ -166,9 +166,7 @@ Website: http://www.webthemez.com/
             </div>
         </div>
         <!-- /. ROW  -->
-
         <footer>
-            <p>All right reserved. Template by: <a href="http://webthemez.com">WebThemez.com</a></p>
         </footer>
     </div>
     <!-- /. PAGE INNER  -->
