@@ -116,7 +116,7 @@ Website: http://www.webthemez.com/
                                     if (isset($_GET['regSuccess'])) {
                                         echo '<div class="form-group"><label style="color: blue; font-size: 20px;">Đăng ký thành công</label></div>';
                                     } else if (isset($_GET['regFail'])) {
-                                        echo '<p style="color: red;">Đăng ký thất bại</p>';
+                                        echo '<div class="form-group"><label style="color: red; font-size: 20px;">Đăng ký thất bại</label></div>';
                                     }
                                     ?>
                                     <div class="form-group">

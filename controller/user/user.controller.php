@@ -37,7 +37,7 @@ function registerAccount()
 		} else {
 			// Kiểm tra tài khoản đã tồn tại chưa
 			if (sv_registerAccount($username, $email, $password, $sdt, $gender, $role)) {
-				header("Location: ../../views/them-tai-khoan.php?regSuccess");
+				return header("Location: ../../views/them-tai-khoan.php?regSuccess");
 			}
 			header("Location: ../../views/them-tai-khoan.php?regFail");
 		}

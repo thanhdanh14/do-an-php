@@ -4,6 +4,7 @@ require_once(__DIR__ . "\..\..\config\connection\connectDatabase.php");
 function sv_checkLogin($email, $password)
 {
     global $conn;
+    $password = md5($password);
     $sql = "select * from user where Email = '$email' and Password = '$password'";
     $query = mysqli_query($conn, $sql);
     $num_rows = mysqli_num_rows($query);
@@ -13,9 +14,10 @@ function sv_checkLogin($email, $password)
 function sv_registerAccount($username, $email, $password, $sdt, $gender, $role)
 {
     global $conn;
+    $password = md5($password);
     //thực hiện việc lưu trữ dữ liệu vào db
-    $sql = "INSERT INTO user( Username, Email, Password, PhoneNumber, Gender, idRole)
-					VALUES( '$username', '$email', '$password', '$sdt', '$gender', '$role')";
+    $sql = "INSERT INTO user (Username, Email, Password, PhoneNumber, Gender, idRole)
+					VALUES('$username', '$email', '$password', '$sdt', '$gender', '$role')";
     // thực thi câu $sql với biến conn lấy từ file connection.php
     $result = $conn->query($sql);
     return $result;
@@ -39,7 +41,7 @@ function sv_updateInfo($username, $email, $password, $sdt, $gender)
 {
     global $conn;
     $ssEmail = $_SESSION['email'];
-    if (!isset($password))
+    if ($password == "")
         $sql = "UPDATE user SET Username = '$username', Email = '$email', PhoneNumber = '$sdt', Gender = '$gender' WHERE Email = '$ssEmail'";
     else $sql = "UPDATE user SET Username = '$username', Email = '$email', PhoneNumber = '$sdt', Gender = '$gender', Password = '$password' WHERE Email = '$ssEmail'";
     $result = $conn->query($sql);
