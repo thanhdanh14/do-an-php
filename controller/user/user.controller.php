@@ -83,14 +83,18 @@ function updateInfo()
 	if (isset($_POST['btn_submit'])) {
 		$sdt = $_POST["txtSdt"];
 		$password = $_POST["txtPassword"];
+		$password = md5($password);
 		$username = $_POST["txtHoTen"];
 		$email = $_POST["txtEmail"];
 		$gender = $_POST["txtGioiTinh"];
 
-		if(sv_updateInfo($username, $email, $password, $sdt, $gender) > 0) {
+		if (sv_updateInfo($username, $email, $password, $sdt, $gender) > 0) {
 			header('Location: ../../../views/thong-tin-ca-nhan.php?updateSuccess');
-		}
-		else header('Location: ../../../views/thong-tin-ca-nhan.php?updateFail');
-	}
-	else header('Location: ../../../views/thong-tin-ca-nhan.php?updateFail');
+		} else header('Location: ../../../views/thong-tin-ca-nhan.php?updateFail');
+	} else header('Location: ../../../views/thong-tin-ca-nhan.php?updateFail');
+}
+
+function listInfo()
+{
+	return sv_listInfo();
 }

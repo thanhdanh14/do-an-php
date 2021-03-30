@@ -47,3 +47,17 @@ function sv_updateInfo($username, $email, $password, $sdt, $gender)
     $result = $conn->query($sql);
     return $result;
 }
+
+function sv_listInfo()
+{
+    global $conn;
+    $sql = "SELECT a.*, b.nameRole FROM user a JOIN role b ON a.idRole = b.idRole";
+    $result = $conn->query($sql);
+    $data = array();
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            array_push($data, $row);
+        }
+    }
+    return $data;
+}

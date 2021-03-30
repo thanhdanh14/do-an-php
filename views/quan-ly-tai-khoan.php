@@ -1,4 +1,10 @@
-﻿<?php session_start(); ?>
+﻿<?php
+require("../controller/user/user.controller.php");
+?>
+<?php session_start(); ?>
+
+
+
 <!DOCTYPE html>
 <!-- 
 Template Name: BRILLIANT Bootstrap Admin Template
@@ -121,16 +127,21 @@ Website: http://www.webthemez.com/
                                                 <th>#</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <?php
+                                        $i = 0;
+                                        foreach (listInfo() as $item) {
+                                            $i++;
+                                        ?>
                                             <tr class="odd gradeX">
-                                                <td>1</td>
-                                                <td>Minh Béo</td>
-                                                <td>mb@gmail.com</td>
-                                                <td>113</td>
-                                                <td class="center">Nữ</td>
-                                                <td class="center">Nhân Viên</td>
+                                                <td><?php echo $i; ?></td>
+                                                <td><?php echo $item["Username"] ?></td>
+                                                <td><?php echo $item['Email']; ?></td>
+                                                <td><?php echo $item['PhoneNumber']; ?></td>
+                                                <td class="center"><?php echo $item['Gender'] == 1 ? "Nam" : "Nữ"; ?></td>
+                                                <td class="center"><?php echo $item['nameRole']; ?></td>
                                                 <td class="center"><a href="#">Chỉnh sửa</a> | <a href="#">Xóa</a></td>
                                             </tr>
+                                        <?php } ?>
                                         </tbody>
                                     </table>
                                 </div>
