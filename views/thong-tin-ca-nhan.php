@@ -153,7 +153,7 @@ Website: http://www.webthemez.com/
                                     </div>
                                     <div class="form-group">
                                         <label for="txtPassword">Mật khẩu</label>
-                                        <input type="password" class="form-control" name="txtPassword" id="txtPassword" placeholder="Mật khẩu">
+                                        <input type="password" class="form-control" name="txtPassword" id="txtPassword" placeholder="Mật khẩu" value="">
                                     </div>
                                     <tr>
                                         <td colspan="2"><input type="submit" name="btn_submit" value="Cập nhật"></td>

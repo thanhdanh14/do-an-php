@@ -26,26 +26,16 @@ function sv_registerAccount($username, $email, $password, $sdt, $gender, $role)
 function sv_InfoUser($email)
 {
     global $conn;
-    $sql = "select * from user a
+    $sql = "select a.*, b.nameRole from user a
             join role b on a.idRole = b.idRole where a.Email ='$email'";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
+            $row["Password"] = NULL;
             $data = $row;
         }
     }
     return $data;
-}
-
-function sv_updateInfo($username, $email, $password, $sdt, $gender)
-{
-    global $conn;
-    $ssEmail = $_SESSION['email'];
-    if ($password == "")
-        $sql = "UPDATE user SET Username = '$username', Email = '$email', PhoneNumber = '$sdt', Gender = '$gender' WHERE Email = '$ssEmail'";
-    else $sql = "UPDATE user SET Username = '$username', Email = '$email', PhoneNumber = '$sdt', Gender = '$gender', Password = '$password' WHERE Email = '$ssEmail'";
-    $result = $conn->query($sql);
-    return $result;
 }
 
 function sv_listInfo()
@@ -60,4 +50,13 @@ function sv_listInfo()
         }
     }
     return $data;
+}
+function sv_updateInfo($username, $email, $password, $sdt, $gender, $ssEmail)
+{
+    global $conn;
+    if ($password == "")
+        $sql = "UPDATE user SET Username = '$username', Email = '$email', PhoneNumber = '$sdt', Gender = '$gender' WHERE Email = '$ssEmail'";
+    else $sql = "UPDATE user SET Username = '$username', Email = '$email', PhoneNumber = '$sdt', Gender = '$gender', Password = '$password' WHERE Email = '$ssEmail'";
+    $result = $conn->query($sql);
+    return $result;
 }

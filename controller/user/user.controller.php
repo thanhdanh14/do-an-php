@@ -15,6 +15,9 @@ if (isset($_REQUEST["action"])) {
 			case 'updateInfo':
 				updateInfo();
 				break;
+			case 'updateInfoEmail';
+				updateInfoEmail($_GET['Email']);
+				break;
 			default:
 				break;
 		}
@@ -37,9 +40,8 @@ function registerAccount()
 		} else {
 			// Kiểm tra tài khoản đã tồn tại chưa
 			if (sv_registerAccount($username, $email, $password, $sdt, $gender, $role)) {
-				return header("Location: ../../views/them-tai-khoan.php?regSuccess");
-			}
-			header("Location: ../../views/them-tai-khoan.php?regFail");
+				header("Location: ../../views/them-tai-khoan.php?regSuccess");
+			} else header("Location: ../../views/them-tai-khoan.php?regFail");
 		}
 	}
 }
@@ -78,6 +80,14 @@ function InfoUser($value)
 	return $data[$value];
 }
 
+function InfoUserByEmail($value, $email)
+{
+	if (isset($email)) {
+		$data = sv_InfoUser($email);
+	}
+	return $data[$value];
+}
+
 function updateInfo()
 {
 	if (isset($_POST['btn_submit'])) {
@@ -87,14 +97,31 @@ function updateInfo()
 		$username = $_POST["txtHoTen"];
 		$email = $_POST["txtEmail"];
 		$gender = $_POST["txtGioiTinh"];
+		$ssEmail = $_SESSION['email'];
 
-		if (sv_updateInfo($username, $email, $password, $sdt, $gender) > 0) {
+		if (sv_updateInfo($username, $email, $password, $sdt, $gender, $ssEmail) > 0) {
 			header('Location: ../../../views/thong-tin-ca-nhan.php?updateSuccess');
-		} else header('Location: ../../../views/thong-tin-ca-nhan.php?updateFail');
-	} else header('Location: ../../../views/thong-tin-ca-nhan.php?updateFail');
+		} else header('Location: ../../../views/thong-tin-ca-nhan.php?UpdateFail');
+	} else header('Location: ../../../views/thong-tin-ca-nhan.php?UpdateFail');
 }
 
 function listInfo()
 {
 	return sv_listInfo();
+}
+
+function updateInfoEmail($ssEmail)
+{
+	if (isset($_POST['btn_submit'])) {
+		$sdt = $_POST["txtSdt"];
+		$password = $_POST["txtPassword"];
+		$password = md5($password);
+		$username = $_POST["txtHoTen"];
+		$email = $_POST["txtEmail"];
+		$gender = $_POST["txtGioiTinh"];
+
+		if (sv_updateInfo($username, $email, $password, $sdt, $gender, $email, $ssEmail) > 0) {
+			header("Location: ../../../views/chinh-sua-thong-tin.php?Email=$ssEmail&updateSuccess");
+		} else header("Location: ../../../views/chinh-sua-thong-tin.php?Email=$ssEmail&updateFail");
+	} else header("Location: ../../../views/chinh-sua-thong-tin.php?Email=$ssEmail&updateFail");
 }

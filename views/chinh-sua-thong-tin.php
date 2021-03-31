@@ -1,10 +1,7 @@
-﻿<?php
+<?php
 require("../controller/user/user.controller.php");
+$getEmail = $_GET['Email'];
 ?>
-<?php session_start(); ?>
-
-
-
 <!DOCTYPE html>
 <!-- 
 Template Name: BRILLIANT Bootstrap Admin Template
@@ -19,11 +16,14 @@ Website: http://www.webthemez.com/
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta content="" name="description" />
     <meta content="webthemez" name="author" />
-    <title>Cửa hàng</title>
+    <title>THÔNG TIN CÁ NHÂN</title>
     <!-- Bootstrap Styles-->
     <link href="../assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FontAwesome Styles-->
     <link href="../assets/css/font-awesome.css" rel="stylesheet" />
+
+    <link href="../assets/css/select2.min.css" rel="stylesheet">
+    <link href="../assets/css/checkbox3.min.css" rel="stylesheet">
     <!-- Morris Chart Styles-->
     <link href="../assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
     <!-- Custom Styles-->
@@ -94,69 +94,85 @@ Website: http://www.webthemez.com/
             </div>
         </nav>
         <!-- /. NAV SIDE  -->
-
         <div id="page-wrapper">
             <div class="header">
                 <h1 class="page-header">
-                    Danh sách tài khoản
+                    THÔNG TIN CÁ NHÂN
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="#">Cửa hàng</a></li>
-                    <li class="active">Danh sách tài khoản</li>
+                    <li class="active">Thông tin cá nhân</li>
                 </ol>
             </div>
             <div id="page-inner">
                 <div class="row">
-                    <div class="col-md-12">
-                        <!-- Advanced Tables -->
+                    <div class="col-xs-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                Advanced Tables
-                            </div>
-                            <div class="panel-body">
-                                <div class="table-responsive">
-                                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                        <thead>
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>Họ tên</th>
-                                                <th>Email</th>
-                                                <th>Số điện thoại</th>
-                                                <th>Giới tính</th>
-                                                <th>Chức vụ</th>
-                                                <th>#</th>
-                                            </tr>
-                                        </thead>
-                                        <?php
-                                        $i = 0;
-                                        foreach (listInfo() as $item) {
-                                            $i++;
-                                        ?>
-                                            <tr class="odd gradeX">
-                                                <td><?php echo $i; ?></td>
-                                                <td><?php echo $item["Username"]; ?></td>
-                                                <td><?php echo $item['Email']; ?></td>
-                                                <td><?php echo $item['PhoneNumber']; ?></td>
-                                                <td class="center"><?php echo $item['Gender'] == 1 ? "Nam" : "Nữ"; ?></td>
-                                                <td class="center"><?php echo $item['nameRole']; ?></td>
-                                                <td class="center"><a href="./chinh-sua-thong-tin.php?Email=<?php echo $item['Email']; ?>">Chỉnh sửa</a> | <a href="#">Xóa</a></td>
-                                            </tr>
-                                        <?php } ?>
-                                        </tbody>
-                                    </table>
+                                <div class="card-title">
+                                    <div class="title">Trang thông tin cá nhân</div>
                                 </div>
                             </div>
+                            <div class="panel-body">
+                                <?php
+                                if (isset($_GET['updateSuccess'])) {
+                                    echo '<div class="form-group"><label style="color: blue; font-size: 20px;">Cập nhật thành công</label></div>';
+                                } else if (isset($_GET['updateFail'])) {
+                                    echo '<div class="form-group"><label style="color: red; font-size: 20px;">Cập nhật thất bại</label></div>';
+                                }
+                                ?>
+                                <form action="../controller/user/user.controller.php?action=updateInfoEmail&Email=<?php echo $getEmail; ?>" method="POST">
+
+                                    <div class="form-group">
+                                        <label for="txtHoten">Họ tên</label>
+                                        <input type="text" class="form-control" name="txtHoTen" id="txtHoten" placeholder="Họ tên" value="<?php echo InfoUserByEmail("Username", $getEmail); ?>" required>
+                                    </div>
+                                    <label for="txtGioiTinh">Giới tính</label><br>
+                                    <div class="radio3 radio-check radio-primary radio-inline">
+                                        <input type="radio" id="radio4" name="txtGioiTinh" value="1" <?php if (InfoUserByEmail("Gender", $getEmail) == 1) echo "checked"; ?>>
+                                        <label for="radio4">
+                                            Nam
+                                        </label>
+                                    </div>
+                                    <div class="radio3 radio-check radio-success radio-inline">
+                                        <input type="radio" id="radio5" name="txtGioiTinh" value="0" <?php if (InfoUserByEmail("Gender", $getEmail) == 0) echo "checked"; ?>>
+                                        <label for="radio5">
+                                            Nữ
+                                        </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txtEmail">Email</label>
+                                        <input type="text" class="form-control" name="txtEmail" id="txtEmail" placeholder="Email" value="<?php echo InfoUserByEmail("Email", $getEmail); ?>" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txtSdt">Số điện thoại</label>
+                                        <input type="number" class="form-control" name="txtSdt" id="txtSdt" placeholder="Số điện thoại" value="<?php echo InfoUserByEmail("PhoneNumber", $getEmail); ?>" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txtChucVu">Chức vụ</label>
+                                        <input type="text" class="form-control" name="txtChucVu" id="txtChucVu" placeholder="Chức vụ" value="<?php echo InfoUserByEmail("nameRole", $getEmail); ?>" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txtPassword">Mật khẩu</label>
+                                        <input type="password" class="form-control" name="txtPassword" id="txtPassword" placeholder="Mật khẩu" value="">
+                                    </div>
+                                    <tr>
+                                        <td colspan="2"><input type="submit" name="btn_submit" value="Cập nhật"></td>
+                                    </tr>
+                                </form>
+                            </div>
                         </div>
-                        <!--End Advanced Tables -->
                     </div>
                 </div>
-                <!-- /. ROW  -->
-                <footer>
-                </footer>
             </div>
-            <!-- /. PAGE INNER  -->
         </div>
-        <!-- /. PAGE WRAPPER  -->
+        <!-- /. ROW  -->
+        <footer>
+        </footer>
+    </div>
+    <!-- /. PAGE INNER  -->
+    </div>
+    <!-- /. PAGE WRAPPER  -->
     </div>
     <!-- /. WRAPPER  -->
     <!-- JS Scripts-->
@@ -165,13 +181,11 @@ Website: http://www.webthemez.com/
     <!-- Bootstrap Js -->
     <script src="../assets/js/bootstrap.min.js"></script>
     <!-- Metis Menu Js -->
-    <script src="../assets/js/jquery.metisMenu.js"></script>
-    <!-- DATA TABLE SCRIPTS -->
-    <script src="../assets/js/dataTables/jquery.dataTables.js"></script>
-    <script src="../assets/js/dataTables/dataTables.bootstrap.js"></script>
-    <script>
+    <script src="assets/js/jquery.metisMenu.js"></script>
+    <script src="assets/js/select2.full.min.js"></script>
+    <script type="text/javascript">
         $(document).ready(function() {
-            $('#dataTables-example').dataTable();
+            $(".selectbox").select2();
         });
     </script>
     <!-- Custom Js -->
