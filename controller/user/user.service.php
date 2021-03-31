@@ -60,3 +60,11 @@ function sv_updateInfo($username, $email, $password, $sdt, $gender, $ssEmail)
     $result = $conn->query($sql);
     return $result;
 }
+function sv_deleteInfoByEmail($email)
+{
+    global $conn;
+    $sql = "DELETE FROM user WHERE Email ='$email'";
+    $result = $conn->query($sql);
+    return $result;
+    
+}

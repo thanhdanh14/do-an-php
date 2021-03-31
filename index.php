@@ -1,4 +1,8 @@
-﻿<?php session_start(); ?>
+﻿<?php session_start(); 
+    // if(!isset($_SESSION['email'])){
+    //     header("location : ./login.php");
+    // } else echo $_SESSION['email'];
+?>
 
 <!DOCTYPE html>
 <!-- 
@@ -52,7 +56,15 @@ Website: http://www.webthemez.com/
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><?php if (isset($_SESSION['email'])) echo $_SESSION['email'];  ?></a></li>
+                        <li><a href="#"><?php if (isset($_SESSION['email'])) 
+                        {
+                        echo $_SESSION['email'];
+
+                        }else 
+                            {
+                                header("Location: ./login.php");
+                            }
+                          ?></a></li>
                         <li><a href="./views/thong-tin-ca-nhan.php"><i class="fa fa-user fa-fw"></i>
                                 Thông tin cá nhân</a>
                         </li>

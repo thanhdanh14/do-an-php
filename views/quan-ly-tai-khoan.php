@@ -1,5 +1,6 @@
 ﻿<?php
 require("../controller/user/user.controller.php");
+
 ?>
 <?php session_start(); ?>
 
@@ -139,7 +140,7 @@ Website: http://www.webthemez.com/
                                                 <td><?php echo $item['PhoneNumber']; ?></td>
                                                 <td class="center"><?php echo $item['Gender'] == 1 ? "Nam" : "Nữ"; ?></td>
                                                 <td class="center"><?php echo $item['nameRole']; ?></td>
-                                                <td class="center"><a href="./chinh-sua-thong-tin.php?Email=<?php echo $item['Email']; ?>">Chỉnh sửa</a> | <a href="#">Xóa</a></td>
+                                                <td class="center"><a href="./chinh-sua-thong-tin.php?Email=<?php echo $item['Email']; ?>">Chỉnh sửa</a> | <a onclick="return confirm('are you sure?')" href="../controller/user/user.controller.php?action=deleteInfoByEmail&Email=<?php echo $item['Email'];?>">Xóa</a></td>
                                             </tr>
                                         <?php } ?>
                                         </tbody>

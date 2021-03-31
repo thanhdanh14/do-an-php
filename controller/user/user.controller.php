@@ -18,6 +18,9 @@ if (isset($_REQUEST["action"])) {
 			case 'updateInfoEmail';
 				updateInfoEmail($_GET['Email']);
 				break;
+			case 'deleteInfoByEmail';
+				deleteInfoByEmail($_GET['Email']);
+				break;
 			default:
 				break;
 		}
@@ -121,7 +124,13 @@ function updateInfoEmail($ssEmail)
 		$gender = $_POST["txtGioiTinh"];
 
 		if (sv_updateInfo($username, $email, $password, $sdt, $gender, $email, $ssEmail) > 0) {
-			header("Location: ../../../views/chinh-sua-thong-tin.php?Email=$ssEmail&updateSuccess");
-		} else header("Location: ../../../views/chinh-sua-thong-tin.php?Email=$ssEmail&updateFail");
-	} else header("Location: ../../../views/chinh-sua-thong-tin.php?Email=$ssEmail&updateFail");
+			header("Location: ../../views/chinh-sua-thong-tin.php?Email=$ssEmail&updateSuccess");
+		} else header("Location: ../../views/chinh-sua-thong-tin.php?Email=$ssEmail&updateFail");
+	} else header("Location: ../../views/chinh-sua-thong-tin.php?Email=$ssEmail&updateFail");
+}
+function deleteInfoByEmail($email)
+{
+	if(sv_deleteInfoByEmail($email)){
+		header("Location: ../../views/quan-ly-tai-khoan.php?&RemoveSucces ");
+	}else header("Location: ../../views/quan-ly-tai-khoan.php?&RemoveFail ");
 }
