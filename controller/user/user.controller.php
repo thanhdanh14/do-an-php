@@ -130,7 +130,11 @@ function updateInfoEmail($ssEmail)
 }
 function deleteInfoByEmail($email)
 {
-	if(sv_deleteInfoByEmail($email)){
+	if (sv_deleteInfoByEmail($email)) {
 		header("Location: ../../views/quan-ly-tai-khoan.php?&RemoveSucces ");
-	}else header("Location: ../../views/quan-ly-tai-khoan.php?&RemoveFail ");
+	} else header("Location: ../../views/quan-ly-tai-khoan.php?&RemoveFail ");
+}
+function checkRole()
+{
+	return sv_checkRole();
 }

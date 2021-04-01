@@ -66,5 +66,17 @@ function sv_deleteInfoByEmail($email)
     $sql = "DELETE FROM user WHERE Email ='$email'";
     $result = $conn->query($sql);
     return $result;
-    
+}
+function sv_checkRole()
+{
+    global $conn;
+    $email = $_SESSION['email'];
+    $sql = "SELECT idRole FROM user WHERE Email = '$email'";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $data = $row;
+        }
+    }
+    return $data["idRole"];
 }

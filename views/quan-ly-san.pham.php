@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 require("../controller/user/user.controller.php");
 ?>
 <?php
@@ -11,11 +11,11 @@ require_once("../header.php");
 <div id="page-wrapper">
     <div class="header">
         <h1 class="page-header">
-            Danh sách tài khoản
+            QUẢN LÝ SẢN PHẨM
         </h1>
         <ol class="breadcrumb">
             <li><a href="#">Cửa hàng</a></li>
-            <li class="active">Danh sách tài khoản</li>
+            <li class="active">Quản Lý Sản phẩm</li>
         </ol>
     </div>
     <div id="page-inner">
