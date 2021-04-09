@@ -1,10 +1,4 @@
 ﻿<?php
-require("../controller/user/user.controller.php");
-?>
-<?php
-if (checkRole() != 2) {
-    header("Location: ../index.php");
-}
 require_once("../header.php");
 ?>
 
@@ -24,7 +18,7 @@ require_once("../header.php");
                 <!-- Advanced Tables -->
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Advanced Tables
+                        Danh sách tài khoản
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive">
@@ -69,15 +63,6 @@ require_once("../header.php");
     </div>
     <!-- /. PAGE INNER  -->
 </div>
-<!-- /. PAGE WRAPPER  -->
-<!-- /. WRAPPER  -->
-<!-- JS Scripts-->
-<!-- jQuery Js -->
-<script src="../assets/js/jquery-1.10.2.js"></script>
-<!-- Bootstrap Js -->
-<script src="../assets/js/bootstrap.min.js"></script>
-<!-- Metis Menu Js -->
-<script src="../assets/js/jquery.metisMenu.js"></script>
 <!-- DATA TABLE SCRIPTS -->
 <script src="../assets/js/dataTables/jquery.dataTables.js"></script>
 <script src="../assets/js/dataTables/dataTables.bootstrap.js"></script>
@@ -86,5 +71,3 @@ require_once("../header.php");
         $('#dataTables-example').dataTable();
     });
 </script>
-<!-- Custom Js -->
-<script src="../assets/js/custom-scripts.js"></script>

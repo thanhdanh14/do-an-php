@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once(__DIR__ . "\user.service.php");
 
 if (isset($_REQUEST["action"])) {
@@ -138,6 +137,7 @@ function checkRole()
 {
 	return sv_checkRole();
 }
+
 function rand_string($length){
     $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     $size = strlen($chars);

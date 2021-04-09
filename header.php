@@ -1,6 +1,8 @@
-<?php require_once(__DIR__ . "\controller\auth.php"); ?>
-
-<?php require_once(__DIR__ . "\controller\user\user.controller.php"); ?>
+<?php
+session_start();
+require_once(__DIR__ . "\controller\auth.php");
+require_once(__DIR__ . "\controller\user\user.controller.php");
+?>
 
 <!DOCTYPE html>
 <!-- 
@@ -19,16 +21,18 @@ Website: http://www.webthemez.com/
     <meta content="webthemez" name="author" />
     <title>Cửa hàng</title>
     <!-- Bootstrap Styles-->
-    <link href="/fe_quanly-cuahang/assets/css/bootstrap.css" rel="stylesheet" />
+    <link href="/do-an-php/assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FontAwesome Styles-->
-    <link href="/fe_quanly-cuahang/assets/css/font-awesome.css" rel="stylesheet" />
+    <link href="/do-an-php/assets/css/font-awesome.css" rel="stylesheet" />
+    <link href="/do-an-php/assets/css/select2.min.css" rel="stylesheet">
+    <link href="/do-an-php/assets/css/checkbox3.min.css" rel="stylesheet">
     <!-- Morris Chart Styles-->
-    <link href="/fe_quanly-cuahang/assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
+    <link href="/do-an-php/assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
     <!-- Custom Styles-->
-    <link href="/fe_quanly-cuahang/assets/css/custom-styles.css" rel="stylesheet" />
+    <link href="/do-an-php/assets/css/custom-styles.css" rel="stylesheet" />
     <!-- Google Fonts-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-    <link rel="stylesheet" href="/fe_quanly-cuahang/assets/js/Lightweight-Chart/cssCharts.css">
+    <link rel="stylesheet" href="/do-an-php/assets/js/Lightweight-Chart/cssCharts.css">
 </head>
 
 <body>
@@ -41,25 +45,25 @@ Website: http://www.webthemez.com/
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/fe_quanly-cuahang/index.php"><strong>Cửa hàng</strong></a>
+                <a class="navbar-brand" href="/do-an-php/index.php"><strong>Cửa hàng</strong></a>
 
-                <div id="sideNav" href="/fe_quanly-cuahang/">
+                <div id="sideNav" href="/do-an-php/">
                     <i class="fa fa-bars icon"></i>
                 </div>
             </div>
             <ul class="nav navbar-top-links navbar-right">
                 <!-- /.dropdown -->
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="/fe_quanly-cuahang/#" aria-expanded="false">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="/do-an-php/#" aria-expanded="false">
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="/fe_quanly-cuahang/#"><?php echo $_SESSION['email']; ?></a></li>
-                        <li><a href="/fe_quanly-cuahang/./views/thong-tin-ca-nhan.php"><i class="fa fa-user fa-fw"></i>
+                        <li><a href="#"><?php echo $_SESSION['email']; ?></a></li>
+                        <li><a href="/do-an-php/views/thong-tin-ca-nhan.php"><i class="fa fa-user fa-fw"></i>
                                 Thông tin cá nhân</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="/fe_quanly-cuahang/./views/logout.php"><i class="fa fa-sign-out fa-fw"></i> Đăng xuất</a>
+                        <li><a href="/do-an-php/views/logout.php"><i class="fa fa-sign-out fa-fw"></i> Đăng xuất</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -73,26 +77,26 @@ Website: http://www.webthemez.com/
                 <ul class="nav" id="main-menu">
                     <?php if (checkRole() == 2) { ?>
                         <li>
-                            <a href="/fe_quanly-cuahang/#"><i class="fa fa-sitemap"></i> Quản lý tài khoản<span class="fa arrow"></span></a>
+                            <a href="/do-an-php/#"><i class="fa fa-sitemap"></i> Quản lý tài khoản<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="/fe_quanly-cuahang/./views/quan-ly-tai-khoan.php"><i class="fa fa-users"></i> Danh sách tài khoản</a>
+                                    <a href="/do-an-php/views/quan-ly-tai-khoan.php"><i class="fa fa-users"></i> Danh sách tài khoản</a>
                                 </li>
                                 <li>
-                                    <a href="/fe_quanly-cuahang/./views/them-tai-khoan.php"><i class="fa fa-user"></i> Thêm tài khoản</a>
+                                    <a href="/do-an-php/views/them-tai-khoan.php"><i class="fa fa-user"></i> Thêm tài khoản</a>
                                 </li>
                             </ul>
                         </li>
                     <?php } ?>
                     <li>
-                        <a href="/fe_quanly-cuahang/./index.php"><i class="fa fa-dashboard"></i> Thống kê cửa hàng</a>
+                        <a href="/do-an-php/index.php"><i class="fa fa-dashboard"></i> Thống kê cửa hàng</a>
                     </li>
 
                     <li>
-                        <a href="/fe_quanly-cuahang/views/quan-ly-san.pham.php"><i class="fa fa-cloud"></i> Quản lý sản phẩm</a>
+                        <a href="/do-an-php/views/quan-ly-san.pham.php"><i class="fa fa-cloud"></i> Quản lý sản phẩm</a>
                     </li>
                     <li>
-                        <a href="/fe_quanly-cuahang/#"><i class="fa fa-fw fa-file"></i> Empty Page</a>
+                        <a href="#"><i class="fa fa-fw fa-file"></i> Empty Page</a>
                     </li>
                 </ul>
             </div>
