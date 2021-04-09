@@ -22,7 +22,7 @@ require_once("../header.php");
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive">
-                            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <table class="table table-striped table-bordered" id="dataTables-example">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
@@ -63,11 +63,11 @@ require_once("../header.php");
     </div>
     <!-- /. PAGE INNER  -->
 </div>
-<script src="../assets/js/dataTables/jquery.dataTables.js"></script>
-<script src="../assets/js/dataTables/dataTables.bootstrap.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
 <script>
     $(document).ready(function() {
         $('#dataTables-example').dataTable();
     });
 </script>
-<!-- Custom Js -->

@@ -1,6 +1,5 @@
 <?php
 require_once("../header.php");
-require("../controller/user/user.controller.php");
 ?>
 
 <!-- /. NAV SIDE  -->

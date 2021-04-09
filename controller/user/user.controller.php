@@ -64,12 +64,13 @@ function checkLogin()
 
 		if (sv_checkLogin($email, $password) > 0) {
 			//tiến hành lưu tên đăng nhập vào session để tiện xử lý sau này
+			session_start();
 			$_SESSION['email'] = $email;
 			// Thực thi hành động sau khi lưu thông tin vào session
 			// ở đây mình tiến hành chuyển hướng trang web tới một trang gọi là index.php
-			header('Location: ../../index.php');
+			header('Location: /do-an-php/index.php');
 		} else {
-			header('Location: ../../login.php?loginFail'); //Tên dn or mk không đúng
+			header('Location: /do-an-php/login.php?loginFail'); //Tên dn or mk không đúng
 		}
 	}
 }
