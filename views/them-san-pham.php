@@ -1,4 +1,7 @@
-<?php require_once("../header.php"); ?>
+<?php
+require_once("../header.php");
+require_once(__DIR__ . "\..\controller\product\product.controller.php");
+?>
 
 <!-- /. NAV SIDE  -->
 <div id="page-wrapper">
@@ -21,12 +24,12 @@
                         </div>
                     </div>
                     <div class="panel-body">
-                        <form action="../controller/product/product.controller.php?action=add" method="POST">
+                        <form action="../controller/product/product.controller.php?action=add" method="POST" enctype="multipart/form-data">
                             <?php
-                            if (isset($_GET['regSuccess'])) {
-                                echo '<div class="form-group"><label style="color: blue; font-size: 20px;">Đăng ký thành công</label></div>';
-                            } else if (isset($_GET['regFail'])) {
-                                echo '<div class="form-group"><label style="color: red; font-size: 20px;">Đăng ký thất bại</label></div>';
+                            if (isset($_GET['success'])) {
+                                echo '<div class="form-group"><label style="color: blue; font-size: 20px;">Thêm thành công</label></div>';
+                            } else if (isset($_GET['fail'])) {
+                                echo '<div class="form-group"><label style="color: red; font-size: 20px;">Thêm thất bại</label></div>';
                             }
                             ?>
                             <div class="form-group">
@@ -47,7 +50,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="txtImage">Hình sản phẩm</label>
-                                <input type="file" id="txtPicture" name="txtPicture" accept=".PNG,.GIF,.JPG">
+                                <input type="file" id="txtImage" name="txtImage" accept=".PNG,.GIF,.JPG" required>
                             </div>
                             <p></p>
                             <tr>
@@ -60,10 +63,5 @@
         </div>
     </div>
 </div>
-<script src="assets/js/select2.full.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $(".selectbox").select2();
-    });
-</script>
-<!-- Custom Js -->
+
+<?php require_once("../footer.php"); ?>

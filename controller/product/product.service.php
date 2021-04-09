@@ -1,6 +1,19 @@
 <?php
 require_once(__DIR__ . "\..\..\config\connection\connectDatabase.php");
 
+function sv_listProduct() {
+    global $conn;
+    $sql = "SELECT * FROM product";
+    $result = $conn->query($sql);
+    $data = array();
+    if($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+            array_push($data, $row);
+        }
+    }
+    return $data;
+}
+
 function sv_addProduct($nameProduct, $quantity, $price, $img, $code)
 {
     global $conn;

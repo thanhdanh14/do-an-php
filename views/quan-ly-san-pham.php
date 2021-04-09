@@ -1,5 +1,6 @@
 ﻿<?php
 require_once("../header.php");
+require_once(__DIR__ . "\..\controller\product\product.controller.php");
 ?>
 
 <div id="page-wrapper">
@@ -36,16 +37,16 @@ require_once("../header.php");
                                 </thead>
                                 <?php
                                 $i = 0;
-                                foreach (listInfo() as $item) {
+                                foreach (listProduct() as $item) {
                                     $i++;
                                 ?>
                                     <tr class="odd gradeX">
                                         <td><?php echo $i; ?></td>
-                                        <td><?php echo $item["Username"]; ?></td>
-                                        <td><?php echo $item['Email']; ?></td>
-                                        <td><?php echo $item['PhoneNumber']; ?></td>
-                                        <td class="center"><?php echo $item['Gender'] == 1 ? "Nam" : "Nữ"; ?></td>
-                                        <td class="center"><?php echo $item['nameRole']; ?></td>
+                                        <td><?php echo $item["nameProduct"]; ?></td>
+                                        <td><?php echo $item['codeProduct']; ?></td>
+                                        <td><?php echo $item['quantityProduct']; ?></td>
+                                        <td><?php echo $item['priceProduct']; ?></td>
+                                        <td><img src="../assets/imageProduct/<?php echo $item['imageProduct']; ?>" style="width: 100px; height: 100px;"></td>
                                         <td class="center"><a href="./chinh-sua-thong-tin.php?Email=<?php echo $item['Email']; ?>">Chỉnh sửa</a> | <a onclick="return confirm('are you sure?')" href="../controller/user/user.controller.php?action=deleteInfoByEmail&Email=<?php echo $item['Email']; ?>">Xóa</a></td>
                                     </tr>
                                 <?php } ?>
@@ -64,7 +65,6 @@ require_once("../header.php");
     <!-- /. PAGE INNER  -->
 </div>
 <!-- DATA TABLE SCRIPTS -->
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
 <script>
@@ -72,3 +72,5 @@ require_once("../header.php");
         $('#dataTables-example').dataTable();
     });
 </script>
+
+<?php require_once("../footer.php"); ?>

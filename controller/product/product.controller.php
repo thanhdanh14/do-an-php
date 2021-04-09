@@ -20,18 +20,21 @@ function addProduct()
     $slsp = $_POST['txtSLSP'];
     $giasp = $_POST['txtGiaSP'];
     $masp = $_POST['txtMaSP'];
-    // $Picture = $_FILES['txtPicture'];
+    $Picture = $_FILES['txtImage'];
     // Up image
-    // $file_temp = $Picture['tmp_name'];
-    // $user_file = $Picture['name'];
+    $file_temp = $Picture['tmp_name'];
+    $user_file = $Picture['name'];
     $timestamp = date("Y") . date("m") . date("d") . date("h") . date("i") . date("s");
-    $filepath = __DIR__ . "\..\..\assets\imageProduct'";
-    // $nameFile = $timestamp . $user_file;
-    // if (move_uploaded_file($file_temp, $filepath . $nameFile) == false)
-    //     die("a");
-    $nameFile = "a.png";
+    $filepath = "../../assets/imageProduct/";
+    $nameFile = $timestamp . $user_file;
+    if (move_uploaded_file($file_temp, $filepath . $nameFile) == false)
+        header("Location: ../../views/them-san-pham.php?fail");
 
     if (sv_addProduct($tensp, $slsp, $giasp, $nameFile, $masp)) {
         header("Location: ../../views/them-san-pham.php?success");
     } else header("Location: ../../views/them-san-pham.php?fail");
+}
+
+function listProduct() {
+    return sv_listProduct();
 }

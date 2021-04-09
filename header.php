@@ -45,22 +45,24 @@ Website: http://www.webthemez.com/
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/do-an-php/index.php"><strong>Cửa hàng</strong></a>
+                <a class="navbar-brand" href="index.html"><strong>Cửa hàng</strong></a>
 
-                <div id="sideNav" href="/do-an-php/">
+                <div id="sideNav" href="">
                     <i class="fa fa-bars icon"></i>
                 </div>
             </div>
+
             <ul class="nav navbar-top-links navbar-right">
                 <!-- /.dropdown -->
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="/do-an-php/#" aria-expanded="false">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><?php echo $_SESSION['email']; ?></a></li>
-                        <li><a href="/do-an-php/views/thong-tin-ca-nhan.php"><i class="fa fa-user fa-fw"></i>
-                                Thông tin cá nhân</a>
+                        <li>
+                            <a href="#"><?php echo $_SESSION['email']; ?></a>
+                        </li>
+                        <li><a href="/do-an-php/views/thong-tin-ca-nhan.php"><i class="fa fa-user fa-fw"></i> Thông tin cá nhân</a>
                         </li>
                         <li class="divider"></li>
                         <li><a href="/do-an-php/views/logout.php"><i class="fa fa-sign-out fa-fw"></i> Đăng xuất</a>

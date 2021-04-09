@@ -1,4 +1,6 @@
-<?php require_once("../header.php"); ?>
+<?php 
+require_once("../header.php");
+?>
 
 <!-- /. NAV SIDE  -->
 <div id="page-wrapper">
@@ -77,10 +79,5 @@
         </div>
     </div>
 </div>
-<script src="assets/js/select2.full.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $(".selectbox").select2();
-    });
-</script>
-<!-- Custom Js -->
+
+<?php require_once("../footer.php"); ?>

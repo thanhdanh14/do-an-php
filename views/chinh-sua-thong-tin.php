@@ -76,9 +76,4 @@ $getEmail = $_GET['Email'];
         </div>
     </div>
 </div>
-<script src="assets/js/select2.full.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $(".selectbox").select2();
-    });
-</script>
+<?php require_once("../footer.php"); ?>

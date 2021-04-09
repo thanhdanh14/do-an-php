@@ -64,7 +64,6 @@ require_once("../header.php");
     <!-- /. PAGE INNER  -->
 </div>
 <!-- DATA TABLE SCRIPTS -->
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
 <script>
@@ -72,3 +71,5 @@ require_once("../header.php");
         $('#dataTables-example').dataTable();
     });
 </script>
+
+<?php require_once("../footer.php"); ?>
