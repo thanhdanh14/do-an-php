@@ -92,10 +92,10 @@ Website: http://www.webthemez.com/
                         <a href="/do-an-php/index.php"><i class="fa fa-dashboard"></i> Thống kê cửa hàng</a>
                     </li>
                     <li>
-                        <a href="/do-an-php/views/quan-ly-san.pham.php"><i class="fa fa-cloud"></i> Quản lý sản phẩm</a>
+                        <a href="/do-an-php/views/quan-ly-san-pham.php"><i class="fa fa-cloud"></i> Quản lý sản phẩm</a>
                     </li>
                     <li>
-                        <a href="/do-an-php/views/them-san.pham.php"><i class="fa fa-plus"></i> Thêm sản phẩm</a>
+                        <a href="/do-an-php/views/them-san-pham.php"><i class="fa fa-plus"></i> Thêm sản phẩm</a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-fw fa-file"></i> Empty Page</a>

@@ -5,11 +5,11 @@ require_once("../header.php");
 <div id="page-wrapper">
     <div class="header">
         <h1 class="page-header">
-            Danh sách tài khoản
+            Danh sách sản phẩm
         </h1>
         <ol class="breadcrumb">
             <li><a href="#">Cửa hàng</a></li>
-            <li class="active">Danh sách tài khoản</li>
+            <li class="active">Danh sách sản phẩm</li>
         </ol>
     </div>
     <div id="page-inner">
@@ -18,7 +18,7 @@ require_once("../header.php");
                 <!-- Advanced Tables -->
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Danh sách tài khoản
+                        Danh sách sản phẩm
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive">

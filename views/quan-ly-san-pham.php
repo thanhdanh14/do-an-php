@@ -1,15 +1,15 @@
-<?php
+﻿<?php
 require_once("../header.php");
 ?>
 
 <div id="page-wrapper">
     <div class="header">
         <h1 class="page-header">
-            QUẢN LÝ SẢN PHẨM
+            Danh sách tài khoản
         </h1>
         <ol class="breadcrumb">
             <li><a href="#">Cửa hàng</a></li>
-            <li class="active">Quản Lý Sản phẩm</li>
+            <li class="active">Danh sách tài khoản</li>
         </ol>
     </div>
     <div id="page-inner">
@@ -18,7 +18,7 @@ require_once("../header.php");
                 <!-- Advanced Tables -->
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Advanced Tables
+                        Danh sách tài khoản
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive">
@@ -63,6 +63,7 @@ require_once("../header.php");
     </div>
     <!-- /. PAGE INNER  -->
 </div>
+<!-- DATA TABLE SCRIPTS -->
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
