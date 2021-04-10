@@ -1,6 +1,10 @@
 ﻿<?php
 require_once("../header.php");
 require_once(__DIR__ . "\..\controller\product\product.controller.php");
+
+if (isset($_GET['id'])) {
+    addCart($_GET['id']);
+}
 ?>
 
 <div id="page-wrapper">
@@ -19,41 +23,51 @@ require_once(__DIR__ . "\..\controller\product\product.controller.php");
                 <!-- Advanced Tables -->
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Danh sách sản phẩm
+                        Danh sách giỏ hàng
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive">
-                            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <table class="table table-striped table-bordered table-hover" id="dataTable">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
                                         <th>Tên sản phẩm</th>
-                                        <th>Mã sản phẩm</th>
                                         <th>Số lượng</th>
                                         <th>Đơn giá</th>
                                         <th>Hình ảnh</th>
-                                        <th>#</th>
                                     </tr>
                                 </thead>
                                 <?php
+                                $total_money = 0;
                                 $i = 0;
-
-                                foreach (listProduct() as $item) {
-                                    $i++;
+                                if (isset($_SESSION["cart_items"]) && count($_SESSION["cart_items"]) > 0) {
+                                    foreach ($_SESSION["cart_items"] as $item) {
+                                        $i++;
+                                        $id = $item["idProduct"];
+                                        $total_money += $item["quantityProduct"] * getInfoProduct($id, "priceProduct");
                                 ?>
-                                    <tr class="odd gradeX">
-                                        <td><?php echo $i; ?></td>
-                                        <td><?php echo $item["nameProduct"]; ?></td>
-                                        <td><?php echo $item['codeProduct']; ?></td>
-                                        <td><?php echo $item['quantityProduct']; ?></td>
-                                        <td><?php echo number_format($item['priceProduct'], 0, '', ',') . "đ"; ?></td>
-                                        <td><img src="../assets/imageProduct/<?php echo $item['imageProduct']; ?>" style="width: 100px; height: 100px;"></td>
-                                        <td class="center"><a href="./chinh-sua-san-pham.php?id=<?php echo $item['idProduct']; ?>">Chỉnh sửa</a> | <a onclick="return confirm('Are you sure?')" href="../controller/product/product.controller.php?action=remove&id=<?php echo $item['idProduct']; ?>">Xóa</a></td>
-                                    </tr>
-                                <?php } ?>
+                                        <tr class="odd gradeX">
+                                            <td><?php echo $i; ?></td>
+                                            <td><?php echo getInfoProduct($id, "nameProduct"); ?></td>
+                                            <td><?php echo $item['quantityProduct']; ?></td>
+                                            <td><?php echo number_format(getInfoProduct($id, "priceProduct"), 0, '', ',') . "đ"; ?></td>
+                                            <td><img src="../assets/imageProduct/<?php echo getInfoProduct($id, "imageProduct"); ?>" style="width: 100px; height: 100px;"></td>
+                                        </tr>
+                                <?php
+                                    }
+                                }
+                                ?>
                                 </tbody>
                             </table>
-                            <p>Tổng số tiền: 10đ</p>
+                            <p>
+                                <span class="btn btn-primary">Tổng số tiền trong giỏ hàng: <?php echo number_format($total_money, 0, '', ',') . "đ"; ?></span>
+                                <a href="../controller/product/product.controller.php?action=payCart">
+                                    <span class="btn btn-success">Thanh toán</span>
+                                </a>
+                            </p>
+                            <p>
+                                <a href="../controller/product/product.controller.php?action=removeCart"><span class="btn btn-danger">Hủy giỏ hàng</span></a>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -69,7 +83,7 @@ require_once(__DIR__ . "\..\controller\product\product.controller.php");
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive">
-                            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <table class="table table-striped table-bordered table-hover" id="GioHang">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
@@ -93,7 +107,7 @@ require_once(__DIR__ . "\..\controller\product\product.controller.php");
                                         <td><?php echo $item['quantityProduct']; ?></td>
                                         <td><?php echo number_format($item['priceProduct'], 0, '', ',') . "đ"; ?></td>
                                         <td><img src="../assets/imageProduct/<?php echo $item['imageProduct']; ?>" style="width: 100px; height: 100px;"></td>
-                                        <td class="center"><a href="./chinh-sua-san-pham.php?id=<?php echo $item['idProduct']; ?>">Chỉnh sửa</a> | <a onclick="return confirm('Are you sure?')" href="../controller/product/product.controller.php?action=remove&id=<?php echo $item['idProduct']; ?>">Xóa</a></td>
+                                        <td class="center"><a href="./gio-hang-va-thanh-toan.php?id=<?php echo $item['idProduct']; ?>">Thêm</a> </td>
                                     </tr>
                                 <?php } ?>
                                 </tbody>

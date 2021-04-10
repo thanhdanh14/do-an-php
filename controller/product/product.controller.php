@@ -14,6 +14,11 @@ if (isset($_REQUEST["action"])) {
             case 'update':
                 updateProduct();
                 break;
+            case 'removeCart':
+                removeCart();
+                break;
+            case 'payCart':
+                payCart();
             default:
                 break;
         }
@@ -81,4 +86,45 @@ function updateProduct()
 function getInfoProduct($id, $value)
 {
     return sv_getInfoProduct($id, $value);
+}
+
+function addCart($id)
+{
+    error_reporting(E_ALL);
+    ini_set('display_errors', '1');
+
+    $idProduct = $id;
+    $was_found = false;
+    $i = 0;
+
+    if (!isset($_SESSION["cart_items"]) || count($_SESSION["cart_items"]) < 1) {
+        $_SESSION["cart_items"] = array(0 => array("idProduct" => $idProduct, "quantityProduct" => 1));
+    } else {
+        foreach ($_SESSION["cart_items"] as $item) {
+            $i++;
+            foreach ($item as $key => $value) {
+                if ($key == "idProduct" && $value == $idProduct) {
+                    array_splice($_SESSION["cart_items"], $i - 1, 1, array(array("idProduct" => $idProduct, "quantityProduct" => $item["quantityProduct"] + 1)));
+                    $was_found = true;
+                }
+            }
+        }
+        if ($was_found == false) {
+            array_push($_SESSION["cart_items"], array("idProduct" => $idProduct, "quantityProduct" => 1));
+        }
+    }
+}
+
+function removeCart()
+{
+    session_start();
+    unset($_SESSION['cart_items']);
+    header("Location: ../../views/gio-hang-va-thanh-toan.php");
+}
+
+function payCart()
+{
+    if (isset($_SESSION["cart_items"]) && count($_SESSION["cart_items"]) > 0 && sv_payCart())
+        header("Location: ../../views/gio-hang-va-thanh-toan.php?success");
+    else header("Location: ../../views/gio-hang-va-thanh-toan.php?fail");
 }

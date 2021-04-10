@@ -28,7 +28,6 @@ Website: http://www.webthemez.com/
     <link href="/do-an-php/assets/css/checkbox3.min.css" rel="stylesheet">
     <!-- Morris Chart Styles-->
     <link href="/do-an-php/assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
-   
     <!-- Custom Styles-->
     <link href="/do-an-php/assets/css/custom-styles.css" rel="stylesheet" />
     <!-- Datatable -->
@@ -92,9 +91,6 @@ Website: http://www.webthemez.com/
                         </li>
                     <?php } ?>
                     <li>
-                        <a href="/do-an-php/index.php"><i class="fa fa-dashboard"></i> Thống kê cửa hàng</a>
-                    </li>
-                    <li>
                         <a href="/do-an-php/views/quan-ly-san-pham.php"><i class="fa fa-cloud"></i> Quản lý sản phẩm</a>
                     </li>
                     <li>
@@ -102,6 +98,9 @@ Website: http://www.webthemez.com/
                     </li>
                     <li>
                         <a href="/do-an-php/views/gio-hang-va-thanh-toan.php"><i class="fa fa-shopping-cart"></i> Giỏ hàng & thanh toán</a>
+                    </li>
+                    <li>
+                        <a href="/do-an-php/index.php"><i class="fa fa-dashboard"></i> Thống kê cửa hàng</a>
                     </li>
                 </ul>
             </div>

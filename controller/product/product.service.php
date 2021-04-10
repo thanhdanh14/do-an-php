@@ -1,5 +1,6 @@
 <?php
 require_once(__DIR__ . "\..\..\config\connection\connectDatabase.php");
+require_once(__DIR__ . "\..\user\user.service.php");
 
 function sv_listProduct()
 {
@@ -68,4 +69,33 @@ function sv_getInfoProduct($id, $value)
         }
     }
     return $data[$value];
+}
+
+function sv_payCart()
+{
+    global $conn;
+    session_start();
+    $id = sv_InfoUser($_SESSION['email']);
+    $id = $id["idUser"];
+    $sql = "INSERT INTO bill VALUES (null, '$id', NOW())";
+    $conn->query($sql);
+
+    $sql = "SELECT LAST_INSERT_ID() AS Haha;";
+    $result_getID = $conn->query($sql);
+    while ($row_getID = $result_getID->fetch_assoc()) {
+        $idSQL = $row_getID["Haha"];
+    }
+    // $data = array();
+    if (isset($_SESSION["cart_items"]) && count($_SESSION["cart_items"]) > 0) {
+        foreach ($_SESSION["cart_items"] as $item) {
+            $id = $item["idProduct"];
+            $name = getInfoProduct($id, "nameProduct");
+            $price = getInfoProduct($id, "priceProduct");
+            $quantity = $item["quantityProduct"];
+            // array_push($data, "", $name, $price, $quantity, $idSQL);
+            $sql .= "INSERT INTO bill_detail VALUES (NULL, '$name', '$price', '$quantity', '$idSQL')";
+        }
+    }
+    $result = $conn->multi_query($sql);
+    return $result;
 }

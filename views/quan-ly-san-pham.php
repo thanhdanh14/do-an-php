@@ -23,7 +23,7 @@ require_once(__DIR__ . "\..\controller\product\product.controller.php");
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive">
-                            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <table class="table table-striped table-bordered table-hover" id="dataTable">
                                 <thead>
                                     <tr>
                                         <th>ID</th>

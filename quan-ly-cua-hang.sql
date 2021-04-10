@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Mar 29, 2021 at 12:31 PM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.11
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th4 10, 2021 lúc 08:46 PM
+-- Phiên bản máy phục vụ: 10.4.13-MariaDB
+-- Phiên bản PHP: 7.4.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `quan-ly-cua-hang`
+-- Cơ sở dữ liệu: `quan-ly-cua-hang`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bill`
+-- Cấu trúc bảng cho bảng `bill`
 --
 
 CREATE TABLE `bill` (
@@ -36,7 +36,7 @@ CREATE TABLE `bill` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bill_detail`
+-- Cấu trúc bảng cho bảng `bill_detail`
 --
 
 CREATE TABLE `bill_detail` (
@@ -50,7 +50,7 @@ CREATE TABLE `bill_detail` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `history_receipt`
+-- Cấu trúc bảng cho bảng `history_receipt`
 --
 
 CREATE TABLE `history_receipt` (
@@ -66,7 +66,7 @@ CREATE TABLE `history_receipt` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product`
+-- Cấu trúc bảng cho bảng `product`
 --
 
 CREATE TABLE `product` (
@@ -78,10 +78,17 @@ CREATE TABLE `product` (
   `codeProduct` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Đang đổ dữ liệu cho bảng `product`
+--
+
+INSERT INTO `product` (`idProduct`, `nameProduct`, `quantityProduct`, `priceProduct`, `imageProduct`, `codeProduct`) VALUES
+(3, 'Ca cao', 5, '10000', '20210410062437RobloxScreenShot20210328_231000146.png', 'CACAO1');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `receipt_product`
+-- Cấu trúc bảng cho bảng `receipt_product`
 --
 
 CREATE TABLE `receipt_product` (
@@ -93,7 +100,7 @@ CREATE TABLE `receipt_product` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `role`
+-- Cấu trúc bảng cho bảng `role`
 --
 
 CREATE TABLE `role` (
@@ -102,7 +109,7 @@ CREATE TABLE `role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `role`
+-- Đang đổ dữ liệu cho bảng `role`
 --
 
 INSERT INTO `role` (`idRole`, `nameRole`) VALUES
@@ -112,7 +119,7 @@ INSERT INTO `role` (`idRole`, `nameRole`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Cấu trúc bảng cho bảng `user`
 --
 
 CREATE TABLE `user` (
@@ -126,70 +133,59 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `user`
+-- Đang đổ dữ liệu cho bảng `user`
 --
 
 INSERT INTO `user` (`idUser`, `Username`, `Email`, `Password`, `PhoneNumber`, `Gender`, `idRole`) VALUES
-(1, 'bien thanh danh', '123444', '123789', 'thanhdanh010499', 1, 1),
-(2, 'do ngoc sy', '123123', '456789', 'asdas@gmail.com', 1, 2),
-(3, 'Quốc Màng Tang', '456', '0938174652', 'quocmangtang@gm', 1, 1),
-(4, 'Minh Phúc', 'minhphuc@gmail.com', '123', '093818754', 1, 1),
-(5, 'hien', 'hientao@gmail.com', '123', '039878454', 1, 1),
-(6, 'Trí Cường', 'tricuong123@gmail.com', '123', '0938454', 1, 2),
-(7, 'asd', '123', '123', '12312312', 1, 2),
-(8, 'dqwdwq', 'wqdwq2@gmail.com', '123', '123123', 1, 1),
-(9, 'qwdqw', 'qwd@gmail.com', '123', '123312', 1, 1),
-(10, 'dsadas', 'wqdqw@gmail.com', '123', '12312', 1, 1),
-(11, 'Quốc Màng Tang', 'tang222@gmail.com', '123', '5465412313213', 0, 2),
-(14, 'MInh Béo', 'tang2622@gmail.com', '123', '0938174684', 1, 1);
+(27, 'ase', '123@gmail.com', '202cb962ac59075b964b07152d234b70', '12476869076', 1, 2);
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `bill`
+-- Chỉ mục cho bảng `bill`
 --
 ALTER TABLE `bill`
   ADD PRIMARY KEY (`idBill`),
   ADD KEY `idUser` (`idUser`);
 
 --
--- Indexes for table `bill_detail`
+-- Chỉ mục cho bảng `bill_detail`
 --
 ALTER TABLE `bill_detail`
   ADD PRIMARY KEY (`id_bill_detail`),
   ADD KEY `idBill` (`idBill`);
 
 --
--- Indexes for table `history_receipt`
+-- Chỉ mục cho bảng `history_receipt`
 --
 ALTER TABLE `history_receipt`
   ADD PRIMARY KEY (`id_history_receipt`),
   ADD KEY `idReceipt` (`idReceipt`);
 
 --
--- Indexes for table `product`
+-- Chỉ mục cho bảng `product`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`idProduct`,`codeProduct`) USING BTREE,
   ADD UNIQUE KEY `codeProduct` (`codeProduct`);
 
 --
--- Indexes for table `receipt_product`
+-- Chỉ mục cho bảng `receipt_product`
 --
 ALTER TABLE `receipt_product`
   ADD PRIMARY KEY (`idReceipt`),
   ADD KEY `idUser` (`idUser`);
 
 --
--- Indexes for table `role`
+-- Chỉ mục cho bảng `role`
 --
 ALTER TABLE `role`
   ADD PRIMARY KEY (`idRole`);
 
 --
--- Indexes for table `user`
+-- Chỉ mục cho bảng `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`idUser`),
@@ -198,69 +194,75 @@ ALTER TABLE `user`
   ADD KEY `idRole` (`idRole`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `bill`
+-- AUTO_INCREMENT cho bảng `bill`
 --
 ALTER TABLE `bill`
-  MODIFY `idBill` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idBill` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
--- AUTO_INCREMENT for table `history_receipt`
+-- AUTO_INCREMENT cho bảng `bill_detail`
+--
+ALTER TABLE `bill_detail`
+  MODIFY `id_bill_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT cho bảng `history_receipt`
 --
 ALTER TABLE `history_receipt`
   MODIFY `id_history_receipt` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `product`
+-- AUTO_INCREMENT cho bảng `product`
 --
 ALTER TABLE `product`
-  MODIFY `idProduct` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idProduct` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `receipt_product`
+-- AUTO_INCREMENT cho bảng `receipt_product`
 --
 ALTER TABLE `receipt_product`
   MODIFY `idReceipt` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT cho bảng `user`
 --
 ALTER TABLE `user`
-  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
--- Constraints for dumped tables
+-- Các ràng buộc cho các bảng đã đổ
 --
 
 --
--- Constraints for table `bill`
+-- Các ràng buộc cho bảng `bill`
 --
 ALTER TABLE `bill`
   ADD CONSTRAINT `bill_ibfk_1` FOREIGN KEY (`idUser`) REFERENCES `user` (`idUser`);
 
 --
--- Constraints for table `bill_detail`
+-- Các ràng buộc cho bảng `bill_detail`
 --
 ALTER TABLE `bill_detail`
   ADD CONSTRAINT `bill_detail_ibfk_1` FOREIGN KEY (`idBill`) REFERENCES `bill` (`idBill`);
 
 --
--- Constraints for table `history_receipt`
+-- Các ràng buộc cho bảng `history_receipt`
 --
 ALTER TABLE `history_receipt`
   ADD CONSTRAINT `history_receipt_ibfk_1` FOREIGN KEY (`idReceipt`) REFERENCES `receipt_product` (`idReceipt`);
 
 --
--- Constraints for table `receipt_product`
+-- Các ràng buộc cho bảng `receipt_product`
 --
 ALTER TABLE `receipt_product`
   ADD CONSTRAINT `receipt_product_ibfk_1` FOREIGN KEY (`idUser`) REFERENCES `user` (`idUser`);
 
 --
--- Constraints for table `user`
+-- Các ràng buộc cho bảng `user`
 --
 ALTER TABLE `user`
   ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`idRole`) REFERENCES `role` (`idRole`);
