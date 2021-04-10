@@ -5,11 +5,11 @@ require_once("../header.php");
 <div id="page-wrapper">
     <div class="header">
         <h1 class="page-header">
-            Danh sách sản phẩm
+            Danh sách tài khoản
         </h1>
         <ol class="breadcrumb">
             <li><a href="#">Cửa hàng</a></li>
-            <li class="active">Danh sách sản phẩm</li>
+            <li class="active">Danh sách tài khoản</li>
         </ol>
     </div>
     <div id="page-inner">
@@ -18,11 +18,11 @@ require_once("../header.php");
                 <!-- Advanced Tables -->
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Danh sách sản phẩm
+                        Danh sách tài khoản
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive">
-                            <table class="table table-striped table-bordered" id="dataTables-example">
+                            <table class="table table-striped table-bordered" id="dataTable">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
@@ -60,14 +60,5 @@ require_once("../header.php");
     </div>
     <!-- /. PAGE INNER  -->
 </div>
-
-<!-- DATA TABLE SCRIPTS -->
-<script src="/do-an-php/assets/js/dataTables/jquery.dataTables.js"></script>
-<script src="/do-an-php/assets/js/dataTables/dataTables.bootstrap.js"></script>
-<script>
-    $(document).ready(function() {
-        $('#dataTables-example').dataTable();
-    });
-</script>
 
 <?php require_once("../footer.php"); ?>
