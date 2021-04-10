@@ -28,10 +28,11 @@ Website: http://www.webthemez.com/
     <link href="/do-an-php/assets/css/checkbox3.min.css" rel="stylesheet">
     <!-- Morris Chart Styles-->
     <link href="/do-an-php/assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
+
     <!-- Custom Styles-->
     <link href="/do-an-php/assets/css/custom-styles.css" rel="stylesheet" />
     <!-- Datatable -->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="/do-an-php/assets/js/Lightweight-Chart/cssCharts.css">
 </head>
 
@@ -100,7 +101,7 @@ Website: http://www.webthemez.com/
                         <a href="/do-an-php/views/them-san-pham.php"><i class="fa fa-plus"></i> Thêm sản phẩm</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-file"></i> Empty Page</a>
+                        <a href="/do-an-php/views/gio-hang-va-thanh-toan.php"><i class="fa fa-shopping-cart"></i> Giỏ hàng & thanh toán</a>
                     </li>
                 </ul>
             </div>

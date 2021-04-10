@@ -57,15 +57,13 @@ require_once("../header.php");
                 <!--End Advanced Tables -->
             </div>
         </div>
-        <!-- /. ROW  -->
-        <footer>
-        </footer>
     </div>
     <!-- /. PAGE INNER  -->
 </div>
+
 <!-- DATA TABLE SCRIPTS -->
-<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+<script src="/do-an-php/assets/js/dataTables/jquery.dataTables.js"></script>
+<script src="/do-an-php/assets/js/dataTables/dataTables.bootstrap.js"></script>
 <script>
     $(document).ready(function() {
         $('#dataTables-example').dataTable();
