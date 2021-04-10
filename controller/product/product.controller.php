@@ -124,6 +124,7 @@ function removeCart()
 
 function payCart()
 {
+    session_start();
     if (isset($_SESSION["cart_items"]) && count($_SESSION["cart_items"]) > 0 && sv_payCart())
         header("Location: ../../views/gio-hang-va-thanh-toan.php?success");
     else header("Location: ../../views/gio-hang-va-thanh-toan.php?fail");

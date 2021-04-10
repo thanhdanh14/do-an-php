@@ -85,14 +85,12 @@ function sv_payCart()
     while ($row_getID = $result_getID->fetch_assoc()) {
         $idSQL = $row_getID["Haha"];
     }
-    // $data = array();
     if (isset($_SESSION["cart_items"]) && count($_SESSION["cart_items"]) > 0) {
         foreach ($_SESSION["cart_items"] as $item) {
             $id = $item["idProduct"];
             $name = getInfoProduct($id, "nameProduct");
             $price = getInfoProduct($id, "priceProduct");
             $quantity = $item["quantityProduct"];
-            // array_push($data, "", $name, $price, $quantity, $idSQL);
             $sql .= "INSERT INTO bill_detail VALUES (NULL, '$name', '$price', '$quantity', '$idSQL')";
         }
     }
