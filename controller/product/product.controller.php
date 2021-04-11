@@ -26,6 +26,9 @@ if (isset($_REQUEST["action"])) {
             case 'addCart':
                 addCart();
                 break;
+            case 'removeItem':
+                removeItem();
+                break;
             default:
                 break;
         }
@@ -157,6 +160,10 @@ function updateCart()
     ini_set('display_errors', '1');
     $idProduct = $_GET['id'];
     $soluong = $_GET['sl'];
+    if ($soluong < 1) {
+        header("Location: ../../views/gio-hang-va-thanh-toan.php?failQuantity");
+        die();
+    }
     $was_found = false;
     $i = 0;
     $price = getInfoProduct($idProduct, "priceProduct");
@@ -164,6 +171,11 @@ function updateCart()
         $_SESSION["cart_items"] = array(0 => array("idProduct" => $idProduct, "quantityProduct" => 1, "total" => ($price * 1)));
     } else {
         foreach ($_SESSION["cart_items"] as $item) {
+            $slKho = sv_getInfoProduct($idProduct, "quantityProduct");
+            if ($soluong > $slKho) {
+                header("Location: ../../views/gio-hang-va-thanh-toan.php?failQuantity");
+                die();
+            }
             $i++;
             foreach ($item as $key => $value) {
                 if ($key == "idProduct" && $value == $idProduct) {
@@ -174,6 +186,24 @@ function updateCart()
         }
         if ($was_found == false) {
             array_push($_SESSION["cart_items"], array("idProduct" => $idProduct, "quantityProduct" => 1, "total" => ($price * 1)));
+        }
+    }
+    header("Location: ../../views/gio-hang-va-thanh-toan.php");
+}
+
+function removeItem()
+{
+    session_start();
+    error_reporting(E_ALL);
+    ini_set('display_errors', '1');
+    $idProduct = $_GET['id'];
+    $i = 0;
+    foreach ($_SESSION["cart_items"] as $item) {
+        $i++;
+        foreach ($item as $key => $value) {
+            if ($key == "idProduct" && $value == $idProduct) {
+                array_splice($_SESSION["cart_items"], $i - 1, 1, null);
+            }
         }
     }
     header("Location: ../../views/gio-hang-va-thanh-toan.php");

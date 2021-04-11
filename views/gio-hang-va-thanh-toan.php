@@ -47,11 +47,14 @@ require_once(__DIR__ . "\..\controller\product\product.controller.php");
                                         <tr class="odd gradeX">
                                             <td><?php echo $i; ?></td>
                                             <td><?php echo getInfoProduct($id, "nameProduct"); ?></td>
-                                            <td><input name="txtSoLuong" id="txtSoLuong" value="<?php echo $item['quantityProduct']; ?>" type="number" min="1"></td>
+                                            <td><input name="txtSoLuong" id="txtSoLuong<?php echo $i; ?>" value="<?php echo $item['quantityProduct']; ?>" type="number" min="1"></td>
                                             <td><?php echo number_format(getInfoProduct($id, "priceProduct"), 0, '', ',') . "đ"; ?></td>
                                             <td><img src="../assets/imageProduct/<?php echo getInfoProduct($id, "imageProduct"); ?>" style="width: 100px; height: 100px;"></td>
                                             <td><?php echo number_format($total, 0, '', ',') . "đ"; ?></td>
-                                            <td><a href="../controller/product/product.controller.php?action=updateCart&id=<?php echo $id; ?>&sl=getSL()">Cập nhật</a></td>
+                                            <td>
+                                                <a href="#" onclick="CapNhat(<?php echo $item['idProduct'] ?>, <?php echo $i; ?>); return false;" class="btn btn-warning">Cập nhật</a>
+                                                <a href="../controller/product/product.controller.php?action=removeItem&id=<?php echo $item["idProduct"]; ?>" class="btn btn-danger">Hủy</a>
+                                            </td>
                                         </tr>
                                 <?php
                                     }
@@ -101,6 +104,7 @@ require_once(__DIR__ . "\..\controller\product\product.controller.php");
                                     $i++;
                                 ?>
                                     <tr class="odd gradeX">
+
                                         <td><?php echo $i; ?></td>
                                         <td><?php echo $item["nameProduct"]; ?></td>
                                         <td><?php echo $item['codeProduct']; ?></td>
@@ -125,10 +129,11 @@ require_once(__DIR__ . "\..\controller\product\product.controller.php");
     <!-- /. PAGE INNER  -->
 </div>
 <script>
-    function getSL() {
-        var SoLuong = document.getElementById("txtSoLuong").value;
-        return SoLuong;
+    function CapNhat(idProduct, i) {
+        let sl = "txtSoLuong" + i;
+        var SoLuong = document.getElementById(sl).value;
+        var url = "../controller/product/product.controller.php?action=updateCart&id=" + idProduct + "&sl=" + SoLuong;
+        return window.location.replace(url);
     }
-    console.log(getSL());
 </script>
 <?php require_once("../footer.php"); ?>

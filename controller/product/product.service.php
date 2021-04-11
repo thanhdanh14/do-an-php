@@ -48,10 +48,10 @@ function sv_updateProduct($id, $nameProduct, $quantity, $price, $img, $code)
 {
     global $conn;
     if ($img) {
-        $sql = "UPDATE product SET quantityProduct = quantityProduct + '$quantity', priceProduct = '$price',
+        $sql = "UPDATE product SET quantityProduct = '$quantity', priceProduct = '$price',
                     nameProduct = '$nameProduct', imageProduct = '$img', codeProduct = '$code' WHERE idProduct = '$id'";
     } else {
-        $sql = "UPDATE product SET quantityProduct = quantityProduct + '$quantity', priceProduct = '$price',
+        $sql = "UPDATE product SET quantityProduct = '$quantity', priceProduct = '$price',
                     nameProduct = '$nameProduct', codeProduct = '$code' WHERE idProduct = '$id'";
     }
     $result = $conn->query($sql);
