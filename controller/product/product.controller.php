@@ -153,29 +153,27 @@ function payCart()
 function updateCart()
 {
     session_start();
-    if (isset($_POST['btnSubmit'])) {
-        error_reporting(E_ALL);
-        ini_set('display_errors', '1');
-        $idProduct = $_GET['id'];
-        $soluong = $_POST['txtSoLuong'];
-        $was_found = false;
-        $i = 0;
-        $price = getInfoProduct($idProduct, "priceProduct");
-        if (!isset($_SESSION["cart_items"]) || count($_SESSION["cart_items"]) < 1) {
-            $_SESSION["cart_items"] = array(0 => array("idProduct" => $idProduct, "quantityProduct" => 1, "total" => ($price * 1)));
-        } else {
-            foreach ($_SESSION["cart_items"] as $item) {
-                $i++;
-                foreach ($item as $key => $value) {
-                    if ($key == "idProduct" && $value == $idProduct) {
-                        array_splice($_SESSION["cart_items"], $i - 1, 1, array(array("idProduct" => $idProduct, "quantityProduct" => $soluong, "total" => ($soluong * $price))));
-                        $was_found = true;
-                    }
+    error_reporting(E_ALL);
+    ini_set('display_errors', '1');
+    $idProduct = $_GET['id'];
+    $soluong = $_GET['sl'];
+    $was_found = false;
+    $i = 0;
+    $price = getInfoProduct($idProduct, "priceProduct");
+    if (!isset($_SESSION["cart_items"]) || count($_SESSION["cart_items"]) < 1) {
+        $_SESSION["cart_items"] = array(0 => array("idProduct" => $idProduct, "quantityProduct" => 1, "total" => ($price * 1)));
+    } else {
+        foreach ($_SESSION["cart_items"] as $item) {
+            $i++;
+            foreach ($item as $key => $value) {
+                if ($key == "idProduct" && $value == $idProduct) {
+                    array_splice($_SESSION["cart_items"], $i - 1, 1, array(array("idProduct" => $idProduct, "quantityProduct" => $soluong, "total" => ($soluong * $price))));
+                    $was_found = true;
                 }
             }
-            if ($was_found == false) {
-                array_push($_SESSION["cart_items"], array("idProduct" => $idProduct, "quantityProduct" => 1, "total" => ($price * 1)));
-            }
+        }
+        if ($was_found == false) {
+            array_push($_SESSION["cart_items"], array("idProduct" => $idProduct, "quantityProduct" => 1, "total" => ($price * 1)));
         }
     }
     header("Location: ../../views/gio-hang-va-thanh-toan.php");

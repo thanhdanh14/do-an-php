@@ -2,7 +2,6 @@
 require_once("../header.php");
 require_once(__DIR__ . "\..\controller\product\product.controller.php");
 ?>
-
 <div id="page-wrapper">
     <div class="header">
         <h1 class="page-header">
@@ -52,7 +51,7 @@ require_once(__DIR__ . "\..\controller\product\product.controller.php");
                                             <td><?php echo number_format(getInfoProduct($id, "priceProduct"), 0, '', ',') . "đ"; ?></td>
                                             <td><img src="../assets/imageProduct/<?php echo getInfoProduct($id, "imageProduct"); ?>" style="width: 100px; height: 100px;"></td>
                                             <td><?php echo number_format($total, 0, '', ',') . "đ"; ?></td>
-                                            <td><a href="../controller/product/product.controller.php?action=updateCart&id=<?php echo $id; ?>&sl=5">Cập nhật</a></td>
+                                            <td><a href="../controller/product/product.controller.php?action=updateCart&id=<?php echo $id; ?>&sl=getSL()">Cập nhật</a></td>
                                         </tr>
                                 <?php
                                     }
@@ -125,5 +124,11 @@ require_once(__DIR__ . "\..\controller\product\product.controller.php");
     </div>
     <!-- /. PAGE INNER  -->
 </div>
-
+<script>
+    function getSL() {
+        var SoLuong = document.getElementById("txtSoLuong").value;
+        return SoLuong;
+    }
+    console.log(getSL());
+</script>
 <?php require_once("../footer.php"); ?>
