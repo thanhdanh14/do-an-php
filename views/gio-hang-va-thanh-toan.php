@@ -1,10 +1,6 @@
 ﻿<?php
 require_once("../header.php");
 require_once(__DIR__ . "\..\controller\product\product.controller.php");
-
-if (isset($_GET['id'])) {
-    addCart($_GET['id']);
-}
 ?>
 
 <div id="page-wrapper">
@@ -35,6 +31,8 @@ if (isset($_GET['id'])) {
                                         <th>Số lượng</th>
                                         <th>Đơn giá</th>
                                         <th>Hình ảnh</th>
+                                        <th>Tổng tiền</th>
+                                        <th>#</th>
                                     </tr>
                                 </thead>
                                 <?php
@@ -44,14 +42,17 @@ if (isset($_GET['id'])) {
                                     foreach ($_SESSION["cart_items"] as $item) {
                                         $i++;
                                         $id = $item["idProduct"];
+                                        $total = $item["total"];
                                         $total_money += $item["quantityProduct"] * getInfoProduct($id, "priceProduct");
                                 ?>
                                         <tr class="odd gradeX">
                                             <td><?php echo $i; ?></td>
                                             <td><?php echo getInfoProduct($id, "nameProduct"); ?></td>
-                                            <td><?php echo $item['quantityProduct']; ?></td>
+                                            <td><input name="txtSoLuong" id="txtSoLuong" value="<?php echo $item['quantityProduct']; ?>" type="number" min="1"></td>
                                             <td><?php echo number_format(getInfoProduct($id, "priceProduct"), 0, '', ',') . "đ"; ?></td>
                                             <td><img src="../assets/imageProduct/<?php echo getInfoProduct($id, "imageProduct"); ?>" style="width: 100px; height: 100px;"></td>
+                                            <td><?php echo number_format($total, 0, '', ',') . "đ"; ?></td>
+                                            <td><a href="../controller/product/product.controller.php?action=updateCart&id=<?php echo $id; ?>&sl=5">Cập nhật</a></td>
                                         </tr>
                                 <?php
                                     }
@@ -107,7 +108,7 @@ if (isset($_GET['id'])) {
                                         <td><?php echo $item['quantityProduct']; ?></td>
                                         <td><?php echo number_format($item['priceProduct'], 0, '', ',') . "đ"; ?></td>
                                         <td><img src="../assets/imageProduct/<?php echo $item['imageProduct']; ?>" style="width: 100px; height: 100px;"></td>
-                                        <td class="center"><a href="./gio-hang-va-thanh-toan.php?id=<?php echo $item['idProduct']; ?>">Thêm</a> </td>
+                                        <td class="center"><a href="../controller/product/product.controller.php?action=addCart&id=<?php echo $item['idProduct']; ?>">Thêm</a> </td>
                                     </tr>
                                 <?php } ?>
                                 </tbody>

@@ -74,9 +74,9 @@ function sv_getInfoProduct($id, $value)
 function sv_payCart()
 {
     global $conn;
-    session_start();
     $id = sv_InfoUser($_SESSION['email']);
     $id = $id["idUser"];
+
     $sql = "INSERT INTO bill VALUES (null, '$id', NOW())";
     $conn->query($sql);
 
@@ -85,15 +85,20 @@ function sv_payCart()
     while ($row_getID = $result_getID->fetch_assoc()) {
         $idSQL = $row_getID["Haha"];
     }
+
     if (isset($_SESSION["cart_items"]) && count($_SESSION["cart_items"]) > 0) {
         foreach ($_SESSION["cart_items"] as $item) {
             $id = $item["idProduct"];
             $name = getInfoProduct($id, "nameProduct");
             $price = getInfoProduct($id, "priceProduct");
             $quantity = $item["quantityProduct"];
-            $sql .= "INSERT INTO bill_detail VALUES (NULL, '$name', '$price', '$quantity', '$idSQL')";
+            $sql .= "INSERT INTO bill_detail VALUES (NULL, '$name', '$price', '$quantity', '$idSQL');";
+
+            $sqlUpdate = "UPDATE product SET quantityProduct = quantityProduct - '$quantity' WHERE idProduct = '$id';";
+            $conn->query($sqlUpdate);
         }
     }
     $result = $conn->multi_query($sql);
+
     return $result;
 }
