@@ -23,7 +23,7 @@ Website: http://www.webthemez.com/
     <!-- Bootstrap Styles-->
     <link href="/do-an-php/assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FontAwesome Styles-->
-    <link href="/do-an-php/assets/css/font-awesome.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link href="/do-an-php/assets/css/select2.min.css" rel="stylesheet">
     <link href="/do-an-php/assets/css/checkbox3.min.css" rel="stylesheet">
     <!-- Morris Chart Styles-->
@@ -33,6 +33,7 @@ Website: http://www.webthemez.com/
     <!-- Datatable -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="/do-an-php/assets/js/Lightweight-Chart/cssCharts.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
@@ -90,6 +91,9 @@ Website: http://www.webthemez.com/
                             </ul>
                         </li>
                     <?php } ?>
+                    <li>
+                        <a href="/do-an-php/views/quan-ly-hoa-don.php"><i class="fa fa-paper-plane"></i> Quản lý hóa đơn</a>
+                    </li>
                     <li>
                         <a href="/do-an-php/views/quan-ly-san-pham.php"><i class="fa fa-cloud"></i> Quản lý sản phẩm</a>
                     </li>

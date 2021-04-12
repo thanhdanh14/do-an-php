@@ -208,3 +208,22 @@ function removeItem()
     }
     header("Location: ../../views/gio-hang-va-thanh-toan.php");
 }
+
+function getBill()
+{
+    return sv_getBill();
+}
+
+function BillDetail()
+{
+    $id = $_GET['id'];
+    return sv_BillDetail($id);
+}
+
+function countBill() {
+    return sv_countBill();
+}
+
+function countProduct() {
+    return sv_countProduct();
+}

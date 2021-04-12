@@ -1,5 +1,6 @@
 ﻿<?php
 require_once("./header.php");
+require_once(__DIR__ . "\controller\product\product.controller.php");
 ?>
 
 <!-- /. NAV SIDE  -->
@@ -16,66 +17,47 @@ require_once("./header.php");
     <div id="page-inner">
         <!-- /. ROW  -->
         <div class="row">
-            <div class="col-md-3 col-sm-12 col-xs-12">
+            <div class="col-md-4 col-sm-12 col-xs-12">
                 <div class="board">
                     <div class="panel panel-primary">
                         <div class="number">
                             <h3>
-                                <h3>44,023</h3>
-                                <small>Daily Visits</small>
+                                <h3><?php echo countBill(); ?></h3>
+                                <small>Tổng số hóa đơn</small>
                             </h3>
                         </div>
                         <div class="icon">
-                            <i class="fa fa-eye fa-5x red"></i>
+                            <i class="fa fa-shopping-cart red"></i>
                         </div>
 
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 col-sm-12 col-xs-12">
+            <div class="col-md-4 col-sm-12 col-xs-12">
                 <div class="board">
                     <div class="panel panel-primary">
                         <div class="number">
                             <h3>
-                                <h3>32,850</h3>
-                                <small>Sales</small>
+                                <h3><?php echo countProduct(); ?></h3>
+                                <small>Tổng số hàng hóa</small>
                             </h3>
                         </div>
                         <div class="icon">
-                            <i class="fa fa-shopping-cart fa-5x blue"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-12 col-xs-12">
-                <div class="board">
-                    <div class="panel panel-primary">
-                        <div class="number">
-                            <h3>
-                                <h3>56,150</h3>
-                                <small>Comments</small>
-                            </h3>
-                        </div>
-                        <div class="icon">
-                            <i class="fa fa-comments fa-5x green"></i>
+                            <i class="fa fa-truck blue"></i>
                         </div>
 
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 col-sm-12 col-xs-12">
-                <div class="board">
-                    <div class="panel panel-primary">
-                        <div class="number">
-                            <h3>
-                                <h3>89,645</h3>
-                                <small>Daily Profits</small>
-                            </h3>
+            <div class="col-sm-8 col-xs-12">
+                <div class="panel panel-default chartJs">
+                    <div class="panel-heading">
+                        <div class="card-title">
+                            <div class="title">Line Chart</div>
                         </div>
-                        <div class="icon">
-                            <i class="fa fa-user fa-5x yellow"></i>
-                        </div>
-
+                    </div>
+                    <div class="panel-body">
+                        <canvas id="line-chart" class="chart"></canvas>
                     </div>
                 </div>
             </div>

@@ -99,6 +99,60 @@ function sv_payCart()
         }
     }
     $result = $conn->multi_query($sql);
-
     return $result;
+}
+
+function sv_getBill()
+{
+    global $conn;
+    $sql = "SELECT a.*, b.Username 
+            FROM bill a
+            JOIN user b ON a.idUser = b.idUser
+            ORDER BY a.dateCreate DESC";
+    $result = $conn->query($sql);
+    $data = array();
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            array_push($data, $row);
+        }
+    }
+    return $data;
+}
+
+function sv_BillDetail($id)
+{
+    global $conn;
+    $sql = "SELECT * FROM bill_detail WHERE idBill = '$id'";
+    $result = $conn->query($sql);
+    $data = array();
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            array_push($data, $row);
+        }
+    }
+    return $data;
+}
+
+function sv_countBill() {
+    global $conn;
+    $sql = "SELECT COUNT(idBill) AS countBill FROM bill";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $data = $row;
+        }
+    }
+    return $data["countBill"];
+}
+
+function sv_countProduct() {
+    global $conn;
+    $sql = "SELECT SUM(quantityProduct) AS Total FROM product";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $data = $row;
+        }
+    }
+    return $data["Total"];
 }

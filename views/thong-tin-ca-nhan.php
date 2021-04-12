@@ -30,7 +30,7 @@ require_once("../header.php");
                             echo '<div class="form-group"><label style="color: red; font-size: 20px;">Cập nhật thất bại</label></div>';
                         }
                         ?>
-                        <form action="../controller//user/user.controller.php?action=updateInfo" method="POST">
+                        <form action="../controller/user/user.controller.php?action=updateInfo" method="POST">
 
                             <div class="form-group">
                                 <label for="txtHoten">Họ tên</label>

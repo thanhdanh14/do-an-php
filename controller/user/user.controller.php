@@ -100,12 +100,13 @@ function updateInfo()
 		$username = $_POST["txtHoTen"];
 		$email = $_POST["txtEmail"];
 		$gender = $_POST["txtGioiTinh"];
+		session_start();
 		$ssEmail = $_SESSION['email'];
 
 		if (sv_updateInfo($username, $email, $password, $sdt, $gender, $ssEmail) > 0) {
-			header('Location: ../../../views/thong-tin-ca-nhan.php?updateSuccess');
-		} else header('Location: ../../../views/thong-tin-ca-nhan.php?UpdateFail');
-	} else header('Location: ../../../views/thong-tin-ca-nhan.php?UpdateFail');
+			header('Location: ../../views/thong-tin-ca-nhan.php?updateSuccess');
+		} else header('Location: ../../views/thong-tin-ca-nhan.php?UpdateFail');
+	} else header('Location: ../../views/thong-tin-ca-nhan.php?UpdateFail');
 }
 
 function listInfo()
